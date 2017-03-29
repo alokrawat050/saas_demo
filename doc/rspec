@@ -1,0 +1,12 @@
+gem install rspec
+rspec --init
+
+rspec spec/models/arabic2english_spec.rb
+
+
+
+guard init
+rails g rspec:install
+
+--run the test case
+bundle exec guard

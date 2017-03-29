@@ -1,0 +1,48 @@
+/password postgres 
+then new password
+
+\password postgres
+
+RESTORE
+pg_restore -i -h localhost -p 5432 -U postgres -c -d  db_name table_name
+
+BACKUP
+pg_dump -i -h localhost -p 5432 -U postgres -F c -b -v -f backup_file_name db_name
+
+ALTER SEQUENCE tab_id_seq RESTART WITH 1;
+
+https://docs.c9.io/docs/setting-up-postgresql
+https://community.c9.io/t/setting-up-postgresql/1573
+
+Initiate Postgresql Service
+$ sudo service postgresql start
+
+Start Postgresql
+$ sudo sudo -u postgres psql
+
+to check DB list
+\list
+
+to connect with db:
+\c <db_name>
+
+to check table
+\d+ <table name>;
+
+to password change
+\password username
+
+CREATE USER gst_user SUPERUSER PASSWORD 'gstUser2017';
+
+\c onetaxgst
+
+GRANT ALL ON <TAB_NAME> TO <USER_NAME>;
+
+GRANT ALL ON table_name TO users;
+
+ALTER TABLE table_name
+  OWNER TO users
+  
+  #acts_as_copy_target
+    
+=> alter sequence seq_name restart with 1;

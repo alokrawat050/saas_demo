@@ -1,0 +1,38 @@
+<div class="col-md-4 col-md-offset-4 well signin">
+  <h2>Sign in</h2>
+  
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_group_for f, :login, label: false  do %>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <span class="fa fa-user fa-lg fa-fw"></span>
+          </span>
+          <%= f.text_field :login, class: 'form-control', placeholder: 'Username or Email' %>
+        </div>
+      </div>  
+    <% end %>
+    
+    <%= form_group_for f, :password, label: false  do %>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <span class="fa fa-key fa-lg fa-fw"></span>
+          </span>
+          <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+        </div>
+      </div>  
+    <% end %>
+    <%= f.hidden_field :password_updated_at, :value => Time.zone.now %>
+    <% if devise_mapping.rememberable? -%>
+      <div class="form_group">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end -%>
+  
+    <%= f.submit "Sign in", class: 'btn btn-primary btn-block btn-lg' %>
+  <% end %>
+  <%= flash_messages layout_flash: false %>
+  <%= render "devise/shared/links" %>
+</div>

@@ -1,0 +1,12 @@
+gem 'delayed_job_active_record'
+
+rails generate delayed_job:active_record
+
+rake db:migrate
+
+
+run below command to send mail
+rake jobs:work
+
+on heroku
+$ heroku ps:scale worker=1

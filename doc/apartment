@@ -1,0 +1,2 @@
+Apartment::Tenant.drop('uks')
+

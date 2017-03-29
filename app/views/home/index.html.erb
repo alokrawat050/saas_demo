@@ -1,0 +1,7 @@
+<div class="col-md-12">
+    <div classs="well"> Welcome 
+        <% if user_signed_in? %>
+            <%= current_user.username %>
+        <% end %>    
+    </div>
+</div>
