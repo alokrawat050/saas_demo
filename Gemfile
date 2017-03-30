@@ -62,6 +62,12 @@ gem "wkhtmltopdf-binary"
 
 gem 'apartment'
 
+#for payment
+gem 'stripe-rails'
+
+#for cron job handling
+gem 'whenever', require: false
+
 group :development, :test do
   #monitoring files
   gem 'guard'

@@ -8,7 +8,7 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = true
-
+  
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -40,4 +40,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  config.stripe.secret_key = 'sk_test_SydYl1bbZtZqvpZssPypUk1Q'
+  config.stripe.publishable_key = 'pk_test_Z4jj2SGM80agcMOAc58WAGok'
+  config.stripe.eager_load = ['user']
 end

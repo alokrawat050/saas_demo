@@ -11,13 +11,13 @@ class SubdomainBlank
 end
 
 Rails.application.routes.draw do
-
   constraints(SubdomainPresent) do 
     root 'home#index', as: :subdomain_root
     #devise_for :users
     devise_for :users,
     controllers: { invitations: 'users/invitations' }
     resources :users#, only: :index
+    resources :payments, only: [:new, :create]
   end  
   
   constraints(SubdomainBlank) do 
