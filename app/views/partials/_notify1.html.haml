@@ -1,0 +1,39 @@
+- if !notice.blank?
+  :javascript
+    $(document).ready(function () {
+    $.notify({
+    message: "#{notice}"
+    },{
+    type: 'info'
+    });
+    });
+    
+- if !alert.blank?
+  :javascript
+    $(document).ready(function () {
+    $.notify({
+    message: "#{alert}"
+    },{
+    type: 'danger'
+    });
+    });
+    
+- if !success.blank?
+  :javascript
+    $(document).ready(function () {
+    $.notify({
+    message: "#{success}"
+    },{
+    type: 'success'
+    });
+    });
+    
+- if !warning.blank?
+  :javascript
+    $(document).ready(function () {
+    $.notify({
+    message: "#{warning}"
+    },{
+    type: 'warning'
+    });
+    });        

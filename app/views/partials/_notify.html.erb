@@ -1,0 +1,22 @@
+<% if !notice.blank? %>
+    <script>
+      $(document).ready(function () {
+        $.notify({
+          message: "<%= notice %>"
+          },{
+          type: 'info'
+        });
+    });
+    </script>
+<% end %>
+<% if !alert.blank? %>
+    <script>
+      $(document).ready(function () {
+        $.notify({
+          message: "<%= alert %>"
+          },{
+          type: 'danger'
+        });
+    });
+    </script>
+<% end %>

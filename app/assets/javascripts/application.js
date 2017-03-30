@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require bootstrap_notify
 //= require bootstrap-toggle
+//= require bootstrap-notify
 //= require_tree .
