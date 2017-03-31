@@ -40,7 +40,7 @@
 Stripe.coupon :off3 do |coupon|
   coupon.duration = 'once'
   coupon.amount_off = 300
-  coupon.currency = 'usd'
+  coupon.currency = 'jpy'
   # coupon.reedem_by = (Time.now + 30.days).utc
   coupon.max_redemptions = 10
 end
@@ -48,7 +48,7 @@ end
 Stripe.coupon :off2 do |coupon|
   coupon.duration = 'once'
   coupon.amount_off = 200
-  coupon.currency = 'usd'
+  coupon.currency = 'jpy'
   # coupon.reedem_by = (Time.now + 30.days).utc
   coupon.max_redemptions = 10
 end

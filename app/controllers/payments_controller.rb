@@ -1,4 +1,5 @@
 class PaymentsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /payments/new
   def new
   end

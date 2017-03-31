@@ -4,6 +4,7 @@
   <title>Workspace</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stripe_javascript_tag %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -23,6 +24,7 @@
         <% if user_signed_in? %>
           <% if current_user.is_admin %>
             <li><%= link_to 'Users', users_path %></li>
+            <li><%= link_to 'Payment', new_payment_path %></li>
           <% end %>  
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">

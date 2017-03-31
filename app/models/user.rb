@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable, invitable
   # Extensions
-  #include Stripe::Callbacks
+  include Stripe::Callbacks
   
   devise :invitable, :database_authenticatable, :registerable, :lockable, :timeoutable, 
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
@@ -36,6 +36,9 @@ class User < ActiveRecord::Base
     devise_mailer.send(notification, self, *args).deliver_now
   end
   
+  # For strip settings
+  # Callbacks
+  before_create :create_stripe_customer
   # Methods
   def do_deposit_transaction(type, stripe_token)
     amount = Transaction.amount_for_type(type)
@@ -59,7 +62,7 @@ class User < ActiveRecord::Base
 
     Stripe::Charge.create(
       amount: amount,
-      currency: 'usd',
+      currency: 'jpy',
       customer: customer.id,
       card: card.id,
       description: "Charge for #{email}"
@@ -93,6 +96,7 @@ class User < ActiveRecord::Base
   end
 
   def save_credit_card(card_token)
-    stripe_customer.cards.create(card: card_token)
+    #stripe_customer.cards.create(card: card_token)
+    stripe_customer.sources.create(source: card_token)
   end
 end
