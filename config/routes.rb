@@ -11,6 +11,8 @@ class SubdomainBlank
 end
 
 Rails.application.routes.draw do
+  get 'tests/index'
+
   get 'plans/index'
 
   constraints(SubdomainPresent) do 

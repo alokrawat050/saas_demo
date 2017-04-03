@@ -15,4 +15,7 @@
 //= require bootstrap-sprockets
 //= require bootstrap-toggle
 //= require bootstrap-notify
+//= require jquery.bootstrap.wizard
+//= require prettify
+//= require jquery.validate
 //= require_tree .

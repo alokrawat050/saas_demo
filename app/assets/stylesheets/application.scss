@@ -1,3 +1,6 @@
+ /*
+  *= require prettify
+ */ 
  @import "bootstrap-sprockets";
  @import "font-awesome-sprockets";
  @import "bootstrap";
@@ -8,3 +11,7 @@
  @import "bootstrap_notify";
  @import "bootstrap-toggle";
  @import "plans";
+ @import "layout.min";
+ @import "blue.min";
+ @import "components.min";
+ @import "plugins.min";
