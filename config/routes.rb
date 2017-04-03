@@ -1,20 +1,29 @@
 class SubdomainPresent
   def self.matches?(request)
-    request.subdomain.gsub!(".gst-alokrawat050","").present?
+    if Rails.env == "production"
+	    request.subdomain.present?
+    elsif Rails.env == "staging"
+      request.subdomain.present?
+    else
+      request.subdomain.gsub!(".gst-alokrawat050","").present?
+	  end
   end
 end
 
 class SubdomainBlank
   def self.matches?(request)
-    request.subdomain.gsub!(".gst-alokrawat050","").blank?
+    if Rails.env == "production"
+	    request.subdomain.blank?
+    elsif Rails.env == "staging"
+      request.subdomain.blank?
+    else
+      request.subdomain.gsub!(".gst-alokrawat050","").blank?
+	  end
   end
 end
 
 Rails.application.routes.draw do
-  get 'tests/index'
-
   get 'plans/index'
-
   constraints(SubdomainPresent) do 
     root 'home#index', as: :subdomain_root
     #devise_for :users

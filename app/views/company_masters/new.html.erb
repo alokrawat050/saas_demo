@@ -34,10 +34,18 @@
             <%= form_group_for f, :company_name, label: false  do %>
                 <div class="input-group">
                     <%= f.text_field :company_name, class: 'form-control', placeholder: 'Company Name' %>
-                    <span class="input-group-addon">.gst-alokrawat050.c9users.io</span>
+                    <span class="input-group-addon">
+                        <% if Rails.env == "production" %>
+	                        .onetaxgst.in
+                        <% elsif Rails.env == "staging" %>
+                        	.onetaxgst.in
+                        <% else %>
+                            .gst-alokrawat050.c9users.io    	
+                        <% end %>
+                    </span>
                 </div>
             <% end %>
             <%= f.submit class: "btn btn-primary" %>
         <% end %>
     </div>    
-</div>    
+</div>

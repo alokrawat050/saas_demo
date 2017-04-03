@@ -33,11 +33,23 @@ class ApplicationController < ActionController::Base
     
     def set_mailer_host
       subdomain = current_account ? "#{current_account.company_name}." : ""
-      ActionMailer::Base.default_url_options[:host] = "#{subdomain}gst-alokrawat050.c9users.io"
+      if Rails.env == "production"
+  	    ActionMailer::Base.default_url_options[:host] = "#{subdomain}onetaxgst.in"
+      elsif Rails.env == "staging"
+        ActionMailer::Base.default_url_options[:host] = "#{subdomain}onetaxgst.in"
+      else
+        ActionMailer::Base.default_url_options[:host] = "#{subdomain}gst-alokrawat050.c9users.io"
+  	  end
     end
       
     def get_subdomain_acc
+      if Rails.env == "production"
+  	    return request.subdomain
+      elsif Rails.env == "staging"
+        return request.subdomain
+      else
         return request.subdomain.gsub!(".gst-alokrawat050","")
+  	  end
     end
     
     def after_sign_out_path_for(resource_or_scope)
