@@ -2,6 +2,8 @@ class PaymentsController < ApplicationController
   before_filter :authenticate_user!
   # GET /payments/new
   def new
+    #plan = Plan.find(params[:plan_id])
+    #@payment = plan.payments.build
   end
 
   def create

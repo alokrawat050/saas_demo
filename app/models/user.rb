@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
   end
 
   def create_stripe_customer
-    customer = Stripe::Customer.create(email: email, account_balance: 0)
+    customer = Stripe::Customer.create(email: email,plan: plan_id, account_balance: 0)
     self.stripe_customer_id = customer.id
   end
 

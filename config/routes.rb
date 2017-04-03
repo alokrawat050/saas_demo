@@ -11,6 +11,8 @@ class SubdomainBlank
 end
 
 Rails.application.routes.draw do
+  get 'plans/index'
+
   constraints(SubdomainPresent) do 
     root 'home#index', as: :subdomain_root
     #devise_for :users
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
     controllers: { invitations: 'users/invitations' }
     resources :users#, only: :index
     resources :payments, only: [:new, :create]
+    resources :plans, only: [:index]
   end  
   
   constraints(SubdomainBlank) do 

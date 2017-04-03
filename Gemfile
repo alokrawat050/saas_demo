@@ -13,6 +13,7 @@ gem 'jquery-turbolinks'
 gem 'font-awesome-sass', '~> 4.5.0'
 gem 'bootstrap-toggle-rails'
 gem 'bootstrap-growl-rails'
+gem 'twitter_bootstrap_wizard_rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

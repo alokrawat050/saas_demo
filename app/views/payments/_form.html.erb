@@ -1,5 +1,7 @@
 <%= form_tag payments_path, id: 'card-details' do %>
   <div class="payment-errors"></div>
+  <%= hidden_field_tag :plan_id %>
+  
   <div class="col-md-4 col-md-offset-4 well">
     <div>
       <label for="card-number">Card Number:</label>
