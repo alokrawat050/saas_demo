@@ -11,11 +11,13 @@
     <div>
       <label for="card-exp-month">Card Expiry Month:</label>
       <input id="card-exp-month" type="text" data-stripe="exp_month"  value="10" class="form-control" />
+      <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
     </div>
   
     <div>
       <label for="card-exp-year">Card Expiry Year:</label>
       <input id="card-exp-year" type="text" data-stripe="exp_year"  value="2021" class="form-control" />
+      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%>
     </div>
   
     <div>
@@ -30,7 +32,6 @@
         <option value="subscription">Monthly subscription, ¥9.97</option>
       </select>
     </div>
-  
     <div>
       <input type="submit" value="Pay Now" class="btn btn-success btn-block btn-lg" />
     </div>

@@ -5,7 +5,18 @@ class ApplicationController < ActionController::Base
   
   before_filter :load_schema, :authenticate_user!, :set_mailer_host
   before_filter :configure_permitted_parameters, if: :devise_controller?
-
+  
+  def is_payment_info_submit
+    if user_signed_in?
+      if current_user.is_admin
+        payment = Payment.all
+          if !payment.nil?
+            redirect_to new_payment_path
+          end  
+      end
+    end  
+  end
+    
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:accept_invitation){|u|
@@ -19,20 +30,21 @@ class ApplicationController < ActionController::Base
       return unless get_subdomain_acc.present?
       
       if current_account
-        Apartment::Tenant.switch!(current_account.company_name)
+        Apartment::Tenant.switch!(current_account.subdomain_name)
       else
         redirect_to root_url(subdomain: false)
       end
     end
     
     def current_account
-      @company_master ||= CompanyMaster.find_by(company_name: get_subdomain_acc)
+      #@company_master ||= CompanyMaster.find_by(company_name: get_subdomain_acc)
+      @account ||= Account.find_by(subdomain_name: get_subdomain_acc)
     end
     
     helper_method :current_account
     
     def set_mailer_host
-      subdomain = current_account ? "#{current_account.company_name}." : ""
+      subdomain = current_account ? "#{current_account.subdomain_name}." : ""
       if Rails.env == "production"
   	    ActionMailer::Base.default_url_options[:host] = "#{subdomain}onetaxgst.in"
       elsif Rails.env == "staging"
@@ -57,6 +69,6 @@ class ApplicationController < ActionController::Base
     end
     
     def after_invite_path_for(resource)
-      users_path
+      invite_users_path
     end
 end

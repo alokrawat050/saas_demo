@@ -29,14 +29,16 @@ Rails.application.routes.draw do
     #devise_for :users
     devise_for :users,
     controllers: { invitations: 'users/invitations' }
+    resources :invite_users
     resources :users#, only: :index
     resources :payments, only: [:new, :create]
     resources :plans, only: [:index]
+    resources :company_masters
   end  
   
   constraints(SubdomainBlank) do 
     root 'welcome#index'
-    resources :company_masters, only: [:new, :create]
+    resources :accounts, only: [:new, :create]
     resources :welcome do
       collection { post :find_team }
     end

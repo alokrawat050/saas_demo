@@ -4,11 +4,15 @@ class User < ActiveRecord::Base
   # Extensions
   include Stripe::Callbacks
   
-  devise :invitable, :database_authenticatable, :registerable, :lockable, :timeoutable, 
-         :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
+  devise :invitable, :database_authenticatable, :registerable, :lockable, :timeoutable, :confirmable, :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
 
   validates :username, presence: true
   #validates_uniqueness_of :username, presence: true
+  validates :username, presence: true,
+                             uniqueness: { case_sensitive: false},
+                             format: { with: /\A[\w\-]+\Z/i, message: 'contains invalid characters' }
+     
+  before_validation :downcase_username
   
   # Virtual attribute for authenticating by either user_id or email
   # This is in addition to a real persisted field like 'user_id'
@@ -91,12 +95,16 @@ class User < ActiveRecord::Base
   end
 
   def create_stripe_customer
-    customer = Stripe::Customer.create(email: email,plan: plan_id, account_balance: 0)
+    customer = Stripe::Customer.create(email: email, account_balance: 0)
     self.stripe_customer_id = customer.id
   end
 
   def save_credit_card(card_token)
     #stripe_customer.cards.create(card: card_token)
     stripe_customer.sources.create(source: card_token)
+  end
+  
+  def downcase_username
+      self.username = username.try(:downcase) 
   end
 end

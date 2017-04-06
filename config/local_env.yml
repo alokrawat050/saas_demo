@@ -8,5 +8,5 @@
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 MAIL_USERNAME: 'mycurrassignment@gmail.com'
 MAIL_PASSWORD: 'mycurrassignment2017'
-DB_COL_ENCRYPTED_KEY: 'My-aSSIGnMENT-SLIaR-YbRU2017-2018-chECK-daTA'
+PAN_NO_ENCRYPTED_KEY: 'VtHBCVSqQCjYrumBfoXEhiaOlxA4ApqLFbRt7IAA4KLPzsTq'
 MY_DEVELOPMENT_URL: 'https://gst-alokrawat050.c9users.io/'

@@ -21,6 +21,6 @@ class WelcomeController < ApplicationController
   
   protected
   def search_team(team_name)
-    @company_master ||= CompanyMaster.find_by(company_name: team_name)
+    @account ||= Account.find_by(subdomain_name: team_name)
   end
 end

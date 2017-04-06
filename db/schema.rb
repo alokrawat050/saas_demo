@@ -11,19 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170331043636) do
+ActiveRecord::Schema.define(version: 20170404143752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "accounts", force: :cascade do |t|
+    t.string   "subdomain_name"
+    t.integer  "owner_id"
+    t.integer  "plan_id"
+    t.string   "updated_by"
+    t.boolean  "del_flag"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "company_masters", force: :cascade do |t|
     t.string   "company_id"
     t.string   "company_name"
-    t.integer  "owner_id"
+    t.string   "company_short_name"
+    t.string   "company_owner_name"
+    t.string   "company_owner_email"
+    t.string   "encrypted_company_pan_no"
+    t.string   "encrypted_company_pan_no_iv"
+    t.string   "company_establish_dt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "created_by"
     t.string   "updated_by"
-    t.boolean  "del_flag"
+    t.boolean  "del_flag",                    default: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -42,10 +58,28 @@ ActiveRecord::Schema.define(version: 20170331043636) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "payments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "gstins", force: :cascade do |t|
+    t.integer  "company_master_id"
+    t.string   "gstin_no"
+    t.string   "created_by"
+    t.string   "updated_by"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "del_flag",          default: false
   end
+
+  add_index "gstins", ["company_master_id"], name: "index_gstins_on_company_master_id", using: :btree
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "account_id"
+    t.string   "created_by"
+    t.string   "updated_by"
+    t.boolean  "del_flag",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "payments", ["account_id"], name: "index_payments_on_account_id", using: :btree
 
   create_table "plans", force: :cascade do |t|
     t.string   "name"
@@ -54,6 +88,16 @@ ActiveRecord::Schema.define(version: 20170331043636) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "subscribes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "stripe_customer_id"
+    t.integer  "plan_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "subscribes", ["user_id"], name: "index_subscribes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

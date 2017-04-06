@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="en">
+  <title>OneTaxGST | <%= content_for?(:title) ? yield(:title) : "OneTaxGST" %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stripe_javascript_tag %>
   <%= csrf_meta_tags %>
+  <%= render(:partial => "partials/notify") %>
 </head>
+<!--<body class="remodal-bg">-->
 <body>
 
 <header class="container">
@@ -22,18 +27,25 @@
     <div id="navbar">
       <ul class="nav navbar-nav pull-right">  
         <% if user_signed_in? %>
-          <% if current_user.is_admin %>
-            <li><%= link_to 'Users', users_path %></li>
-            <li><%= link_to 'Payment', new_payment_path %></li>
-          <% end %>  
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <%= current_user.username %>
+              <i class="fa fa-user-o" aria-hidden="true"></i> <%= current_user.username %>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-              <li><%= link_to 'Profile', edit_user_registration_path %></li>
-              <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+              <li><%#= link_to new_payment_path do %>
+                <%= link_to new_user_path do %>
+                  <i class="fa fa-cog" aria-hidden="true"></i> Setting
+                <% end %>
+              </li>
+              <li><%= link_to edit_user_registration_path do %>
+                  <i class="fa fa-key" aria-hidden="true"></i> Password Update
+                <% end %>
+              </li>
+              <li><%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to sign out?' } do %>
+                  <i class="fa fa-sign-out" aria-hidden="true"></i> Sign out
+                <% end %>
+              </li>
             </ul>
           </li>
         <% else %>
@@ -51,13 +63,20 @@
   <%# end %>
 
   <%#= flash_messages if show_layout_flash? %>
-  <div class="notifications.top-right">
-    <%= render(:partial => "partials/notify") %>
-  </div>  
+  
   <div class="row">
     <%= yield %>
   </div>  
 </div>  
-
+<!--<div class="remodal" data-remodal-id="modal">-->
+<!--  <button data-remodal-action="close" class="remodal-close"></button>-->
+<!--  <h1>Remodal</h1>-->
+<!--  <p>-->
+<!--    Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.-->
+<!--  </p>-->
+<!--  <br>-->
+<!--  <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>-->
+<!--  <button data-remodal-action="confirm" class="remodal-confirm">OK</button>-->
+<!--</div>-->
 </body>
 </html>

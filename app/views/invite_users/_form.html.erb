@@ -1,0 +1,39 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Add</div>
+    <div class="panel-body">
+    	<div class="row">
+            <!-- username -->
+            <div class="col-xs-4 col-sm-2 col-md-3">
+                <label for="input">UserName</label><lable style="color: red"><b> *</b></label>
+                <div  class="form-group">
+                    <%= f.text_field :username, maxlength: 50, class: "form-control", placeholder: 'UserName', :disabled => 'true'  %>
+                </div>
+            </div>
+                            
+            <!-- email -->
+            <div class="col-xs-8 col-sm-2 col-md-6">
+                <label for="input">Email ID</label><lable style="color: red"><b> *</b></label>
+                <div  class="form-group">
+                    <%= f.text_field :email, maxlength: 50, autocomplete: "off", class: "form-control",placeholder: "Email",:disabled => 'true' %>
+                </div>
+            </div>
+            
+            <!-- is_admin -->
+            <div class="col-xs-8 col-sm-2 col-md-6">
+                <label for="input">Admin</label><lable style="color: red"><b> *</b></label>
+                <div  class="form-group">
+                    <%= f.check_box :is_admin, data: {:toggle => "toggle", :onstyle => "success", :offstyle => "danger"} %>
+                </div>
+            </div>
+            
+            <!-- is_user_active -->
+            <div class="col-xs-8 col-sm-2 col-md-6">
+                <label for="input">User Active</label><lable style="color: red"><b> *</b></label>
+                <div  class="form-group">
+                    <%= f.check_box :is_user_active, data: {:toggle => "toggle", :onstyle => "success", :offstyle => "danger"} %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%#= hidden_field_tag 'update_id', current_m_user_login.user_id %>

@@ -46,3 +46,5 @@ ALTER TABLE table_name
   #acts_as_copy_target
     
 => alter sequence seq_name restart with 1;
+
+alter table accounts alter column del_flag set default 'false';

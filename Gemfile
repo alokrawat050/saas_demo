@@ -41,6 +41,9 @@ gem 'attr_encrypted'
 
 gem 'delayed_job_active_record'
 
+#To Get Calendar Control
+gem 'bootstrap-datepicker-rails'
+
 # Admin Access
 gem 'rails_admin'
 
@@ -70,6 +73,8 @@ gem 'stripe-rails'
 
 #for cron job handling
 gem 'whenever', require: false
+
+gem 'aws-ses', '~> 0.6.0'
 
 group :development, :test do
   #monitoring files

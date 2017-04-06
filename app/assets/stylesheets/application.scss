@@ -11,3 +11,50 @@
  @import "bootstrap_notify";
  @import "bootstrap-toggle";
  @import "plans";
+ @import "bootstrap-datepicker3";
+ //@import "blue.min";
+ //@import "bootstrap-switch.min";
+ @import "components.min";
+ //@import "layout.min";
+ @import "plugins.min";
+ //@import "simple-line-icons.min";
+ 
+ .field_with_errors_bk {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+// for notification in screen start
+.notifications {
+  position: fixed;
+  z-index: 9999;
+}
+
+/* Positioning */ 
+.notifications.top-right {
+  right: 10px;
+  top: 25px;
+}
+
+.notifications.top-left {
+  left: 10px;
+  top: 25px;
+}
+
+.notifications.bottom-left {
+  left: 10px;
+  bottom: 25px;
+}
+
+.notifications.bottom-right {
+  right: 10px;
+  bottom: 25px;
+}
+
+/* Notification Element */
+.notifications > div {
+  position: relative;
+  margin: 5px 0px;
+}
+// for notification in screen end

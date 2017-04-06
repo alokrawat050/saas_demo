@@ -1,0 +1,10 @@
+<% content_for :title do %>Update Client Details<% end %>
+<% def msg(status) return "#{status}します、よろしいでしょうか？" end %>
+<div class="container">
+<%= form_for @company_master do |f| %>
+    <%= render(:partial => "form", :locals =>{:f => f}) %>
+    
+    <%= f.submit("Update", class:"btn btn-warning", data: {:confirm => msg('Update'), :disable_with => 'Updating'}) %>
+    <%= link_to 'Go To Client List', company_masters_path, :class => 'btn btn-default' %>
+<% end %>
+</div>

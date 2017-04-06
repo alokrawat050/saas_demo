@@ -19,6 +19,9 @@ module Workspace
       end if File.exists?(env_file)
     end  
     
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.assets.precompile += %w(custom/*.js custom/*.scss custom/*.css)
+    
     config.middleware.use 'Apartment::Elevators::Subdomain'
     
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.

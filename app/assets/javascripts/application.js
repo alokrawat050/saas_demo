@@ -18,4 +18,5 @@
 //= require jquery.bootstrap.wizard
 //= require prettify
 //= require jquery.validate
-//= require_tree .
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB
+//= require company_masters

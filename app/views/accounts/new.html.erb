@@ -1,0 +1,52 @@
+<div class="col-md-6 col-md-offset-3 panel panel-default">
+    <div class="panel-body">
+        <h2>Create an Acccount</h2>
+        <%= form_for @account do |f| %>
+            <%= f.fields_for :owner do |o| %>
+                <%= form_group_for o, :username, label: false  do %>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="fa fa-user fa-lg fa-fw"></span></span>
+                        <%= o.text_field :username, class: 'form-control', placeholder: 'UserName' %>
+                    </div>
+                <% end %>  
+                <%= form_group_for o, :email, label: false  do %>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="fa fa-envelope fa-lg fa-fw"></span></span>
+                        <%= o.email_field :email, class: 'form-control', placeholder: 'Email' %>
+                    </div>
+                <% end %>  
+                <%= form_group_for o, :password, label: false  do %>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="fa fa-key fa-lg fa-fw"></span></span>
+                        <%= o.password_field :password, class: 'form-control', placeholder: 'Password' %>
+                    </div>
+                <% end %>  
+                <%= form_group_for o, :password_confirmation, label: false  do %>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="fa fa-key fa-lg fa-fw"></span></span>
+                        <%= o.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Password' %>
+                    </div>
+                <% end %>
+                <!-- set user as a Admin, if user create company master.-->
+                <%= o.hidden_field :is_admin, :value => "true" %>
+                <%= o.hidden_field :password_updated_at, :value => Time.zone.now %>
+            <% end %>
+            <%= form_group_for f, :subdomain_name, label: false  do %>
+                <div class="input-group">
+                    <%= f.text_field :subdomain_name, class: 'form-control', placeholder: 'Company Name' %>
+                    <span class="input-group-addon">
+                        <% if Rails.env == "production" %>
+	                        .onetaxgst.in
+                        <% elsif Rails.env == "staging" %>
+                        	.onetaxgst.in
+                        <% else %>
+                            .gst-alokrawat050.c9users.io    	
+                        <% end %>
+                    </span>
+                </div>
+            <% end %>
+            <%= f.hidden_field :plan_id, :value => params[:plan_id] %>
+            <%= f.submit class: "btn btn-primary" %>
+        <% end %>
+    </div>    
+</div>

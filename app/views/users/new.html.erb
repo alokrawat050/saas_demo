@@ -1,0 +1,158 @@
+<!--<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">-->
+  <div class="page-container">
+    <div class="page-content-wrapper">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="portlet light " id="form_wizard_1">
+              <div class="portlet-title">
+                <div class="caption">
+                  <i class=" icon-layers font-red"></i>
+                  <span class="caption-subject font-red bold uppercase"> Form Wizard -
+                  <span class="step-title"> Step 1 of 4 </span>
+                  </span>
+                </div>
+              </div>
+              <div class="portlet-body form">
+                <%= form_for @user,:html => { :id => 'submit_form'} do |f| %>
+                <!-- <form class="form-horizontal" action="#" id="submit_form" method="POST"> -->
+                  <div class="form-wizard">
+                    <div class="form-body">
+                      <ul class="nav nav-pills nav-justified steps">
+                        <li>
+                          <a href="#tab1" data-toggle="tab" class="step">
+                          <span class="number"> 1 </span>
+                          <span class="desc">
+                          <i class="fa fa-check"></i> Account Setup </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#tab2" data-toggle="tab" class="step">
+                          <span class="number"> 2 </span>
+                          <span class="desc">
+                          <i class="fa fa-check"></i> Profile Setup </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#tab3" data-toggle="tab" class="step active">
+                          <span class="number"> 3 </span>
+                          <span class="desc">
+                          <i class="fa fa-check"></i> Billing Setup </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#tab4" data-toggle="tab" class="step">
+                          <span class="number"> 4 </span>
+                          <span class="desc">
+                          <i class="fa fa-check"></i> Confirm </span>
+                          </a>
+                        </li>
+                      </ul>
+                      <div id="bar" class="progress progress-striped" role="progressbar">
+                        <div class="progress-bar progress-bar-success"> </div>
+                      </div>
+                      <div class="tab-content">
+                        <div class="alert alert-danger display-none">
+                          <button class="close" data-dismiss="alert"></button> You have some form errors. Please check below. 
+                        </div>
+                        <div class="alert alert-success display-none">
+                          <button class="close" data-dismiss="alert"></button> Your form validation is successful! 
+                        </div>
+
+                        <div class="tab-pane active" id="tab1">
+                          <h3 class="block">Provide your account details</h3>
+                          <div class="form-group">
+                            <label class="control-label col-md-3">FirstName
+                            <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                              <%= f.text_field :username, class: "form-control fields", name: "username" %>
+                              <!-- <input type="text" class="form-control" name="username" /> -->
+                              <span class="help-block"> Provide your username </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="tab-pane" id="tab2">
+                          <h3 class="block">Provide your profile details</h3>
+                          <div class="form-group">
+                            <label class="control-label col-md-3">LastName
+                            <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                              <%= f.text_field :email, class: "form-control fields", name: "fullname"%>
+                              <!-- <input type="text" class="form-control" name="fullname" /> -->
+                              <span class="help-block"> Provide your fullname </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="tab-pane" id="tab3">
+                          <h3 class="block">Provide your billing and credit card details</h3>
+                          <div class="form-group">
+                            <label class="control-label col-md-3">address
+                            <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                              <%= f.text_area :is_admin, class: "form-control fields"%>
+                              <!-- <input type="text" class="form-control" name="card_name" /> -->
+                              <span class="help-block"> </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="tab-pane" id="tab4">
+                          <h3 class="block">Confirm your account</h3>
+                          <div class="form-group">
+                            <label class="control-label col-md-3">city
+                            <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                              <%= f.text_area :created_at, class: "form-control fields"%>
+                              <!-- <input type="text" class="form-control" name="card_name" /> -->
+                              <span class="help-block"> </span>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                          <a href="javascript:;" class="btn default button-previous" id= "back_btn">
+                          <i class="fa fa-angle-left" ></i> Back </a>
+                          <a href="javascript:;" class="btn btn-outline green button-next" id="next_btn"> Continue
+                          <i class="fa fa-angle-right"></i>
+                          </a>
+                          <%= f.submit "Submit", class: "btn green button-submit"%>
+                          <!-- <a href="javascript:;" class="btn green button-submit"> Submit -->
+                          <i class="fa fa-check"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!-- </form> -->
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<style>
+.has-error .form-control {
+  border-color: #e73d4a !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}  
+</style>
+
+<%= javascript_include_tag 'custom/app.min.js', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'custom/form-wizard.min.js', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'custom/jquery.bootstrap.wizard.min.js', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'custom/select2.full.min.js', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'custom/additional-methods.min.js', 'data-turbolinks-track' => true %>
+<%#= javascript_include_tag 'custom/jquery.validate.min.js', 'data-turbolinks-track' => true %>
