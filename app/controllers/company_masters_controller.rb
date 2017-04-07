@@ -2,7 +2,7 @@ class CompanyMastersController < ApplicationController
   skip_before_filter :authenticate_user!
   before_action :find_company_info, only: [:edit, :update, :delete, :destroy]
   def index
-    @companies = CompanyMaster.all
+    @companies = CompanyMaster.all.order(:id)
   end
   
   def new

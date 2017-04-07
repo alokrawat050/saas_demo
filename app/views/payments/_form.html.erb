@@ -1,6 +1,5 @@
-<%= form_tag payments_path, id: 'card-details' do %>
+<%= form_tag payments_path, id: 'card-details' do |f| %>
   <div class="payment-errors"></div>
-  <%= hidden_field_tag :plan_id %>
   
   <div class="col-md-4 col-md-offset-4 well">
     <div>
@@ -11,13 +10,13 @@
     <div>
       <label for="card-exp-month">Card Expiry Month:</label>
       <input id="card-exp-month" type="text" data-stripe="exp_month"  value="10" class="form-control" />
-      <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
+      <%#= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card-exp-month"} %>
     </div>
   
     <div>
       <label for="card-exp-year">Card Expiry Year:</label>
       <input id="card-exp-year" type="text" data-stripe="exp_year"  value="2021" class="form-control" />
-      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%>
+      <%#= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card-exp-year"}%>
     </div>
   
     <div>
@@ -37,3 +36,5 @@
     </div>
   </div>  
 <% end %>
+<%= stripe_javascript_tag %>
+<%= javascript_include_tag 'custom/payments.js', 'data-turbolinks-track' => true %>

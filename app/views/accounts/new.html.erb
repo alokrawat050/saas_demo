@@ -45,7 +45,8 @@
                     </span>
                 </div>
             <% end %>
-            <%= f.hidden_field :plan_id, :value => params[:plan_id] %>
+            <%#= f.hidden_field :plan_id, :value => params[:plan_id] %>
+            <%= f.hidden_field :plan_id %>
             <%= f.submit class: "btn btn-primary" %>
         <% end %>
     </div>    

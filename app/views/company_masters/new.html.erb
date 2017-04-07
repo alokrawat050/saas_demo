@@ -1,10 +1,12 @@
 <% content_for :title do %>Add Client<% end %>
 <% def msg(status) return "#{status}します、よろしいでしょうか？" end %>
-<div class="container">
-<%= form_for @company_master, :url => {:action => 'create'} do |f| %>
-    <%= render(:partial => "form", :locals =>{:f => f}) %>
+<!--<div class="container">-->
+<!--<%#= form_for @company_master, :url => {:action => 'create'} do |f| %>-->
+<!--    <%#= render(:partial => "form", :locals =>{:f => f}) %>-->
     
-    <%= f.submit("Add", class:"btn btn-success", data: {:confirm => msg('Add'), :disable_with => 'Adding'}) %>
-    <%= link_to 'Go To Client List', company_masters_path, :class => 'btn btn-default' %>
-<% end %>
-</div>
+<!--    <%#= f.submit("Add", class:"btn btn-success", data: {:confirm => msg('Add'), :disable_with => 'Adding'}) %>-->
+<!--    <%#= link_to 'Go To Client List', company_masters_path, :class => 'btn btn-default' %>-->
+<!--<%# end %>-->
+<!--</div>-->
+
+<%= render :partial => "form" %>

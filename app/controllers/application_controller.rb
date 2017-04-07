@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
   def is_payment_info_submit
     if user_signed_in?
       if current_user.is_admin
-        payment = Payment.all
-          if !payment.nil?
+        payment = Payment.find_by_account_id(current_account.id)
+          if payment.nil?
             redirect_to new_payment_path
           end  
       end
@@ -37,8 +37,7 @@ class ApplicationController < ActionController::Base
     end
     
     def current_account
-      #@company_master ||= CompanyMaster.find_by(company_name: get_subdomain_acc)
-      @account ||= Account.find_by(subdomain_name: get_subdomain_acc)
+      @current_account ||= Account.find_by(subdomain_name: get_subdomain_acc)
     end
     
     helper_method :current_account
@@ -53,7 +52,7 @@ class ApplicationController < ActionController::Base
         ActionMailer::Base.default_url_options[:host] = "#{subdomain}gst-alokrawat050.c9users.io"
   	  end
     end
-      
+    
     def get_subdomain_acc
       if Rails.env == "production"
   	    return request.subdomain

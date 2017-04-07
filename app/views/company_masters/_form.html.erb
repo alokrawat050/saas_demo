@@ -1,68 +1,211 @@
-<div class="panel panel-primary">
-    <div class="panel-heading">Add Client</div>
-    <div class="panel-body">
-    	<div class="row">
-            <!-- company_name -->
-            <div class="col-xs-4 col-sm-2 col-md-4">
-                <!--<label for="input">Client Name</label><lable style="color: red"><b> *</b></label>-->
-                <%= form_group_for f, :company_name, label: true  do %>
-                    <div  class="form-group">
-                        <%= f.text_field :company_name, maxlength: 50, class: "form-control", placeholder: 'Client Name' %>
-                            <span id="tenpo_code_errmsg" class="form_err_message"></span>
-                    </div>
-                <% end %>    
-            </div>
-                            
-            <!-- company_owner_name -->
-            <div class="col-xs-8 col-sm-2 col-md-6">
-                <%= form_group_for f, :company_owner_name, label: true  do %>
-                <!--<label for="input">Client Owner Name</label><lable style="color: red"><b> *</b></label>-->
-                    <div  class="form-group">
-                        <%= f.text_field :company_owner_name, maxlength: 50, autocomplete: "off", class: "form-control",placeholder: "Client Owner Name" %>
-                    </div>
-                <% end %>    
-            </div>
-            
-            <!-- company_pan_no -->
-            <div class="col-xs-8 col-sm-2 col-md-6">
-                <%= form_group_for f, :company_pan_no, label: true  do %>
-                <!--<label for="input">Client PAN NO</label><lable style="color: red"><b> *</b></label>-->
-                    <div  class="form-group">
-                        <%= f.text_field :company_pan_no, maxlength: 12, autocomplete: "off", class: "form-control",placeholder: "Client PAN NO" %>
-                    </div>
-                <% end %>
-            </div>
-            
-            <!-- company_establish_dt -->
-            <div class="col-xs-8 col-sm-2 col-md-6">
-                <%= form_group_for f, :company_establish_dt, label: true  do %>
-                    <!--<label for="input">Establish Date</label><lable style="color: red"><b> *</b></label>-->
-                    <div  class="form-group">
-                        <%= f.text_field :company_establish_dt, maxlength: 10, autocomplete: "off", class: "form-control",placeholder: "Establish Date" %>
-                    </div>
-                <% end %>    
-            </div>
-            
-            <!-- add new GSTID -->
-            <div class="col-xs-8 col-sm-2 col-md-4">
-                <!--<label for="input">GSTIN Details</label>-->
-                <div  class="form-group">
-                    <%#= f.fields_for :gstins do |builder| %>
-                        <%#= render 'gstin_fields', f: builder %>
-                    <%# end %>  
-                    
-                    <%= f.fields_for :gstins do |o| %>
-                        <%= form_group_for o, :gstin_no, label: true  do %>
-                            <div class="form-group">
-                                <%= o.text_field :gstin_no, class: 'form-control', placeholder: 'GSTIN' %>
-                            </div>
-                        <% end %>
-                    <% end %>
+<!--<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">-->
+  <div class="page-container">
+    <div class="page-content-wrapper">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="portlet light " id="form_wizard_1">
+              <div class="portlet-title">
+                <div class="caption">
+                  <i class=" icon-layers font-red"></i>
+                  <span class="caption-subject font-red bold uppercase"> Form Wizard -
+                  <span class="step-title"> Step 1 of 3 </span>
+                  </span>
                 </div>
-                <%= link_to_add_fields "Add GSTIN", f, :gstins %>
+              </div>
+              <div class="portlet-body form">
+                <%= form_for @company_master,:html => { :id => 'submit_form'} do |f| %>
+                <!-- <form class="form-horizontal" action="#" id="submit_form" method="POST"> -->
+                  <div class="form-wizard">
+                    <div class="form-body">
+                      <ul class="nav nav-pills nav-justified steps">
+                        <li>
+                          <a href="#tab1" data-toggle="tab" class="step">
+                          <span class="number"> 1 </span>
+                          <span class="desc">
+                          <i class="fa fa-check"></i> Client Details </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#tab2" data-toggle="tab" class="step">
+                          <span class="number"> 2 </span>
+                          <span class="desc">
+                          <i class="fa fa-check"></i> GSTIN Details </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#tab3" data-toggle="tab" class="step active">
+                          <span class="number"> 3 </span>
+                          <span class="desc">
+                          <i class="fa fa-check"></i> Confirm</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <div id="bar" class="progress progress-striped" role="progressbar">
+                        <div class="progress-bar progress-bar-success"> </div>
+                      </div>
+                      <div class="tab-content">
+                        <div class="alert alert-danger display-none">
+                          <button class="close" data-dismiss="alert"></button> You have some form errors. Please check below. 
+                        </div>
+                        <div class="alert alert-success display-none">
+                          <button class="close" data-dismiss="alert"></button> Your form validation is successful! 
+                        </div>
+
+                        <div class="tab-pane active" id="tab1">
+                          <h3 class="block">Provide your client details</h3>
+                          <div class="form-group">
+                            <label class="control-label col-md-3">Client Name
+                            <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                              <%= f.text_field :company_name, class: "form-control fields", name: "company_name" %>
+                              <!-- <input type="text" class="form-control" name="username" /> -->
+                              <span class="help-block"> Provide your client name </span>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3">Owner Name
+                            <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                              <%= f.text_field :company_owner_name, class: "form-control fields", name: "company_owner_name" %>
+                              <!-- <input type="text" class="form-control" name="username" /> -->
+                              <span class="help-block"> Provide your owner name </span>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3">Owner Email ID
+                            <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                              <%= f.text_field :company_owner_email, class: "form-control fields", name: "email" %>
+                              <!-- <input type="text" class="form-control" name="username" /> -->
+                              <span class="help-block"> Provide your owner email </span>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3">Client PAN NO
+                            <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                              <%= f.text_field :company_pan_no, class: "form-control fields", name: "company_pan_no" %>
+                              <!-- <input type="text" class="form-control" name="username" /> -->
+                              <span class="help-block"> Provide your client PAN NO </span>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3">Establish Date
+                            <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                              <%= f.text_field :company_establish_dt, class: "form-control fields", name: "establish_dt" %>
+                              <!-- <input type="text" class="form-control" name="username" /> -->
+                              <span class="help-block"> Provide your establish date </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="tab-pane" id="tab2">
+                          <h3 class="block">Provide your GSTIN details</h3>
+                          <div class="form-group">
+                            <label class="control-label col-md-3">GSTIN
+                            <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                              <%= f.fields_for :gstins do |o| %>
+                                  <%= form_group_for o, :gstin_no, label: true  do %>
+                                      <div class="form-group">
+                                          <%= o.text_field :gstin_no, class: 'form-control fields', placeholder: 'GSTIN', name: "gstin_no" %>
+                                      </div>
+                                  <% end %>
+                              <% end %>
+                              <%= link_to_add_fields "Add GSTIN", f, :gstins %>
+                              <!-- <input type="text" class="form-control" name="fullname" /> -->
+                              <span class="help-block"> Provide your GSTIN details </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="tab-pane" id="tab3">
+                          <h3 class="block">Confirm client details</h3>
+                            <h4 class="form-section">Client Details</h4>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Client Name:</label>
+                                <div class="col-md-4">
+                                    <p class="form-control-static" data-display="company_name"> </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Owner Name:</label>
+                                <div class="col-md-4">
+                                    <p class="form-control-static" data-display="company_owner_name"> </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Email:</label>
+                                <div class="col-md-4">
+                                    <p class="form-control-static" data-display="email"> </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">PAN NO:</label>
+                                <div class="col-md-4">
+                                    <p class="form-control-static" data-display="company_pan_no"> </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Establish Date:</label>
+                                <div class="col-md-4">
+                                    <p class="form-control-static" data-display="establish_dt"> </p>
+                                </div>
+                            </div>
+                            <h4 class="form-section">GSTIN Details</h4>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">GSTIN:</label>
+                                <div class="col-md-4">
+                                    <p class="form-control-static" data-display="gstin_no"> </p>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                          <a href="javascript:;" class="btn default button-previous" id= "back_btn">
+                          <i class="fa fa-angle-left" ></i> Back </a>
+                          <a href="javascript:;" class="btn btn-outline green button-next" id="next_btn"> Continue
+                          <i class="fa fa-angle-right"></i>
+                          </a>
+                          <%= f.submit "Submit", class: "btn green button-submit"%>
+                          <!-- <a href="javascript:;" class="btn green button-submit"> Submit -->
+                          <i class="fa fa-check"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!-- </form> -->
+                <%end%>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<%#= hidden_field_tag 'update_id', current_m_user_login.user_id %>
+  </div>
+
+<style>
+.has-error .form-control {
+  border-color: #e73d4a !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}  
+</style>
+
+<%= javascript_include_tag 'custom/app.min.js', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'custom/form-wizard.min.js', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'custom/jquery.bootstrap.wizard.min.js', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'custom/select2.full.min.js', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'custom/additional-methods.min.js', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'custom/company_master.js', 'data-turbolinks-track' => true %>

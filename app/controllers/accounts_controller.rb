@@ -7,6 +7,7 @@ class AccountsController < ApplicationController
   
   def create
     @account = Account.new(accounts_params)
+    @account.assign_attributes(:plan_id => params[:plan_id])
     if @account.valid?
       Apartment::Tenant.create(@account.subdomain_name)
       Apartment::Tenant.switch!(@account.subdomain_name)

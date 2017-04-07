@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :is_payment_info_submit
   def index
     @users = User.all.order(:id)
   end

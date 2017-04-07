@@ -1,0 +1,72 @@
+<% def msg(status) return "#{status}します、よろしいでしょうか？" end %>
+<div class="col-md-8 col-md-offset-2">
+    <h2>Authourized User's List</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Email</th>
+                        <th>Admin</th>
+                        <th>Active User</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @invite_users.each do | user | %>
+                        <tr>
+                            <td><%= user.username %></td>
+                            <td><%= user.email %></td>
+                            <td>
+                                <% if user.is_admin %>
+                                    <input type="checkbox" checked disabled data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                                <% else %>
+                                    <input type="checkbox" disabled data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                                <% end %>
+                            </td>
+                            <td>
+                                <% if user.is_user_active %>
+                                    <input type="checkbox" checked disabled data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                                <% else %>
+                                    <input type="checkbox" disabled data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                                <% end %>
+                            </td>
+                            <td><%= user_status(user) %></td>
+                            <td class="form-group">
+                                <%= link_to :controller => 'invite_users', :action => 'edit', :id => user.id  do %>
+                                  <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                <% end %>
+                                
+                                <%= link_to user, method: :delete, data: { confirm: 'Do you want to delete the record？' }  do %>
+                                    <i class="fa fa-trash-o fa-2x" style="color:red;"></i>
+                                <% end %> 
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            
+            <h3 class="extra-margin-top">Invite User</h3>
+            <%#= form_for(User.new, url: user_invitation_path, html: { class: "form-inline" }) do | f |  %>
+                <%#= f.email_field :email, placeholder: 'Email', label: false, class: "form-control" %>
+                <%#= f.submit("Invite User", class:"btn btn-primary", data: {:confirm => msg('Invite User'), :disable_with => 'Invite User'}) %>
+            <%# end %>
+            
+            <%= simple_form_for(User.new, url: user_invitation_path, html: { class: "form-inline", method: :post }) do | f |  %>
+                <%= f.input :email, placeholder: 'Email', label: false, class: "form-control" %>
+                <%= f.button :submit, 'Invite User', class:"btn btn-primary" %>
+            <% end %>
+        </div>
+    </div>    
+</div>
+
+<script>
+  $(function() {
+    $('#toggle-yes').bootstrapToggle({
+      on: 'Yes',
+      off: 'No'
+    });
+  })
+</script>

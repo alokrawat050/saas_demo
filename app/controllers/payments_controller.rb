@@ -10,8 +10,9 @@ class PaymentsController < ApplicationController
   def create
     if stripe_token = params[:stripe_token]
       if current_user.do_deposit_transaction(params[:payment_type], stripe_token)
-        @payment = Payment.new(payment_params)
-        @payment.assign_attributes(:created_by => current_user.username)
+        @payment = Payment.new
+        #current_account.id, refer in the application_controller.rb, method name: current_account
+        @payment.assign_attributes(:account_id => current_account.id, :created_by => current_user.username)
           if @payment.save
             flash[:notice] = 'Card charged successfully'
           end
@@ -22,7 +23,7 @@ class PaymentsController < ApplicationController
       flash[:alert] = 'You did not submit the form correctly'
     end
 
-    redirect_to new_payment_path
+    redirect_to root_path #new_payment_path
   end
   
   private
