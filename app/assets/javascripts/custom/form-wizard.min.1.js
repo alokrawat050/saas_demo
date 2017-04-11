@@ -24,15 +24,15 @@ var FormWizard = function() {
                     errorClass: "help-block help-block-error",
                     focusInvalid: !1,
                     rules: {
-                        "company_master[company_name]": {
+                        company_name: {
                             minlength: 5,
                             required: !0
                         },
-                        "company_master[company_owner_name]": {
+                        company_owner_name: {
                             minlength: 5,
                             required: !0
                         },
-                        "company_master[company_pan_no]": {
+                        company_pan_no: {
                             minlength: 13,
                             required: !0,
                         },
@@ -41,17 +41,12 @@ var FormWizard = function() {
                             required: !0,
                             equalTo: "#submit_form_password"
                         },
-                        "company_master[gstins_attributes][0][gstin_no]": {
+                        gstin_no: {
                             required: !0
                         },
-                        "company_master[company_owner_email]": {
+                        email: {
                             required: !0,
                             email: !0
-                        },
-                        "company_master[company_establish_dt]": {
-                            minlength: 10,
-                            maxlength: 10,
-                            date : true
                         },
                         phone: {
                             required: !0
@@ -165,63 +160,6 @@ var FormWizard = function() {
         }
     }
 }();
-
-$.validator.addMethod(
-    "checkDateFormat",
-    function(value, element) {
-        // put your own logic here, this is just a (crappy) example
-        if (value!=""){
-            return value.match(/^\d\d?\/\d\d?\/\d\d\d\d$/);
-        } else {
-            return true;
-        }
-    },
-    "Please enter a date in the format dd/mm/yyyy."
-);
-
-// Override built-in date validator
-$.validator.addMethod(
-    "date",
-    function (value, element) {
-        //Return            NB: isRequired is not checked at this stage
-        return (value=="")? true : isDate(value);
-    },
-    "Please enter a date in the format dd/mm/yyyy."
-);
-
-//Validates a date input -- http://jquerybyexample.blogspot.com/2011/12/validate-date-    using-jquery.html
-function isDate(txtDate) {
-    var currVal = txtDate;
-    if (currVal == '')
-       return false;
-
-  //Declare Regex  
-  var rxDatePattern = /^(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{4})$/;
-  var dtArray = currVal.match(rxDatePattern); // is format OK?
-
-  if (dtArray == null)
-      return false;
-
-   //Checks for dd/mm/yyyy format.
-   var dtDay = dtArray[1];
-   var dtMonth = dtArray[3];
-   var dtYear = dtArray[5];
-
-  if (dtMonth < 1 || dtMonth > 12)
-      return false;
-  else if (dtDay < 1 || dtDay > 31)
-      return false;
-  else if ((dtMonth == 4 || dtMonth == 6 || dtMonth == 9 || dtMonth == 11) && dtDay == 31)
-      return false;
-  else if (dtMonth == 2) {
-      var isleap = (dtYear % 4 == 0 && (dtYear % 100 != 0 || dtYear % 400 == 0));
-      if (dtDay > 29 || (dtDay == 29 && !isleap))
-          return false;
-  }
-
-  return true;
-}
-
 jQuery(document).ready(function() {
     FormWizard.init()
 });

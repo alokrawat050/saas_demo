@@ -1,0 +1,6 @@
+sudo apt-get update
+sudo apt-get upgrade
+
+rvm install ruby-2.3.1
+rvm use 2.3.1
+

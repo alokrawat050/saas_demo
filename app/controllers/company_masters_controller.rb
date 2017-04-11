@@ -15,7 +15,8 @@ class CompanyMastersController < ApplicationController
     if @company_master.valid?
       if @company_master.save
         flash[:notice] = "Client Added Successfully."
-        redirect_to new_company_master_path
+        #redirect_to new_company_master_path
+        redirect_to root_path
       else
         render action: 'new'
       end
@@ -46,12 +47,13 @@ class CompanyMastersController < ApplicationController
     attributes = {:del_flag => "true", :updated_by => current_user.username}
     @company_master.update_attributes(attributes)
     flash[:notice] = "Client '#{@company_master.company_name}' Scccessfully Deleted."
-    redirect_to company_master_path
+    #redirect_to company_master_path
+    redirect_to root_path
   end
   
   private
     def company_masters_params
-      params.require(:company_master).permit(:company_id, :company_name, :company_owner_name, :company_pan_no, :company_establish_dt, gstins_attributes: [:id, :gstin_no, :_destroy])
+      params.require(:company_master).permit(:company_id, :company_name, :company_owner_name, :company_owner_email, :company_pan_no, :company_establish_dt, gstins_attributes: [:id, :gstin_no, :_destroy])
     end
     
     def find_company_info

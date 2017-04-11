@@ -1,207 +1,174 @@
-<!--<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">-->
-  <div class="page-container">
-    <div class="page-content-wrapper">
-      <div class="page-content">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="portlet light " id="form_wizard_1">
-              <div class="portlet-title">
-                <div class="caption">
-                  <i class=" icon-layers font-red"></i>
-                  <span class="caption-subject font-red bold uppercase"> Form Wizard -
-                  <span class="step-title"> Step 1 of 3 </span>
-                  </span>
-                </div>
-              </div>
-              <div class="portlet-body form">
-                <%= form_for @company_master,:html => { :id => 'submit_form'} do |f| %>
-                <!-- <form class="form-horizontal" action="#" id="submit_form" method="POST"> -->
-                  <div class="form-wizard">
-                    <div class="form-body">
-                      <ul class="nav nav-pills nav-justified steps">
+<div class="portlet light " id="form_wizard_1">
+	<div class="portlet-title">
+	    <div class="caption">
+	        <i class=" icon-layers font-red"></i>
+	        <span class="caption-subject font-red bold uppercase"> Client Add -
+            <span class="step-title"> Step 1 of 3 </span>
+	        </span>
+	    </div>
+	</div>
+
+	<div class="portlet-body form">
+        <!--<form class="form-horizontal" action="#" id="submit_form" method="POST">-->
+        <%#= form_for @company_master, :url => {:action => 'create'}, :html => { :id => 'submit_form', :class =>"form-horizontal"} do |f| %>
+            <div class="form-wizard">
+                <div class="form-body">
+                    <ul class="nav nav-pills nav-justified steps">
                         <li>
-                          <a href="#tab1" data-toggle="tab" class="step">
-                          <span class="number"> 1 </span>
-                          <span class="desc">
-                          <i class="fa fa-check"></i> Client Details </span>
-                          </a>
+                            <a href="#tab1" data-toggle="tab" class="step">
+                                <span class="number"> 1 </span>
+                                <span class="desc">
+                                    <i class="fa fa-check"></i> Client Details </span>
+                            </a>
                         </li>
                         <li>
-                          <a href="#tab2" data-toggle="tab" class="step">
-                          <span class="number"> 2 </span>
-                          <span class="desc">
-                          <i class="fa fa-check"></i> GSTIN Details </span>
-                          </a>
+                            <a href="#tab2" data-toggle="tab" class="step active">
+                                <span class="number"> 2 </span>
+                                <span class="desc">
+                                    <i class="fa fa-check"></i> GSTIN Details </span>
+                            </a>
                         </li>
                         <li>
-                          <a href="#tab3" data-toggle="tab" class="step active">
-                          <span class="number"> 3 </span>
-                          <span class="desc">
-                          <i class="fa fa-check"></i> Confirm</span>
-                          </a>
+                            <a href="#tab3" data-toggle="tab" class="step">
+                                <span class="number"> 3 </span>
+                                <span class="desc">
+                                    <i class="fa fa-check"></i> Confirm </span>
+                            </a>
                         </li>
-                      </ul>
-                      <div id="bar" class="progress progress-striped" role="progressbar">
+                    </ul>
+                    <div id="bar" class="progress progress-striped" role="progressbar">
                         <div class="progress-bar progress-bar-success"> </div>
-                      </div>
-                      <div class="tab-content">
+                    </div>
+                    <div class="tab-content">
                         <div class="alert alert-danger display-none">
-                          <button class="close" data-dismiss="alert"></button> You have some form errors. Please check below. 
-                        </div>
+                            <button class="close" data-dismiss="alert"></button> You have some form errors. Please check below. </div>
                         <div class="alert alert-success display-none">
-                          <button class="close" data-dismiss="alert"></button> Your form validation is successful! 
-                        </div>
-
+                            <button class="close" data-dismiss="alert"></button> Your form validation is successful! </div>
                         <div class="tab-pane active" id="tab1">
-                          <h3 class="block">Provide your client details</h3>
-                          <div class="form-group">
-                            <label class="control-label col-md-3">Client Name
-                            <span class="required"> * </span>
-                            </label>
-                            <div class="col-md-4">
-                              <%= f.text_field :company_name, class: "form-control fields", name: "company_name" %>
-                              <!-- <input type="text" class="form-control" name="username" /> -->
-                              <span class="help-block"> Provide your client name </span>
+                            <h3 class="block">Provide your client details</h3>
+                            <div class="form-group">
+                              <label class="control-label col-md-3">Client Name
+                                <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-4">
+                                <%= f.text_field :company_name, class: "form-control fields", placeholder: "Client Name" %>
+                                <!--<span class="help-block"> Provide your client name </span>-->
+                              </div>
                             </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3">Owner Name
-                            <span class="required"> * </span>
-                            </label>
-                            <div class="col-md-4">
-                              <%= f.text_field :company_owner_name, class: "form-control fields", name: "company_owner_name" %>
-                              <!-- <input type="text" class="form-control" name="username" /> -->
-                              <span class="help-block"> Provide your owner name </span>
+                            <div class="form-group">
+                              <label class="control-label col-md-3">Owner Name
+                              <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-4">
+                              <%= f.text_field :company_owner_name, class: "form-control fields", placeholder: "Owner Name" %>
+                              </div>
                             </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3">Owner Email ID
-                            <span class="required"> * </span>
-                            </label>
-                            <div class="col-md-4">
-                              <%= f.text_field :company_owner_email, class: "form-control fields", name: "email" %>
-                              <!-- <input type="text" class="form-control" name="username" /> -->
-                              <span class="help-block"> Provide your owner email </span>
+                            <div class="form-group">
+                              <label class="control-label col-md-3">Owner Email ID
+                                <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-4">
+                                <%= f.text_field :company_owner_email, class: "form-control fields", placeholder: "Email ID" %>
+                              </div>
                             </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3">Client PAN NO
-                            <span class="required"> * </span>
-                            </label>
-                            <div class="col-md-4">
-                              <%= f.text_field :company_pan_no, class: "form-control fields", name: "company_pan_no" %>
-                              <!-- <input type="text" class="form-control" name="username" /> -->
-                              <span class="help-block"> Provide your client PAN NO </span>
+                            <div class="form-group">
+                              <label class="control-label col-md-3">Client PAN NO
+                                <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-4">
+                                <%= f.text_field :company_pan_no, class: "form-control fields",  placeholder: "PAN NO", size: 13 %>
+                              </div>
                             </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3">Establish Date
-                            <span class="required"> * </span>
-                            </label>
-                            <div class="col-md-4">
-                              <%= f.text_field :company_establish_dt, class: "form-control fields", name: "establish_dt" %>
-                              <!-- <input type="text" class="form-control" name="username" /> -->
-                              <span class="help-block"> Provide your establish date </span>
+                            <div class="form-group">
+                              <label class="control-label col-md-3">Establish Date
+                                <!--<span class="required"> * </span>-->
+                              </label>
+                              <div class="col-md-4">
+                                <%= f.text_field :company_establish_dt, class: "form-control fields", size: 10, placeholder: "Establish Date" %>
+                              </div>
                             </div>
-                          </div>
                         </div>
-
                         <div class="tab-pane" id="tab2">
-                          <h3 class="block">Provide your GSTIN details</h3>
-                          <div class="form-group">
-                            <label class="control-label col-md-3">GSTIN
-                            <span class="required"> * </span>
-                            </label>
-                            <div class="col-md-4">
-                              <%= f.fields_for :gstins do |o| %>
-                                  <%= form_group_for o, :gstin_no, label: true  do %>
-                                      <div class="form-group">
-                                          <%= o.text_field :gstin_no, class: 'form-control fields', placeholder: 'GSTIN', name: "gstin_no" %>
-                                      </div>
-                                  <% end %>
-                              <% end %>
-                              <%= link_to_add_fields "Add GSTIN", f, :gstins %>
-                              <!-- <input type="text" class="form-control" name="fullname" /> -->
-                              <span class="help-block"> Provide your GSTIN details </span>
+                            <h3 class="block">Provide your GSTIN details</h3>
+                            <div class="form-group">
+                              <label class="control-label col-md-3">GSTIN
+                                <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-4">
+                                <%= f.fields_for :gstins do |o| %>
+                                  <%#= form_group_for o, :gstin_no, label: true  do %>
+                                  <div class="form-group">
+                                    <%= o.text_field :gstin_no, class: 'form-control fields', placeholder: 'GSTIN' %>
+                                  </div>
+                                  <%# end %>
+                                <% end %>
+                                <%= link_to_add_fields "Add GSTIN", f, :gstins %>
+                              </div>
                             </div>
-                          </div>
                         </div>
-
                         <div class="tab-pane" id="tab3">
-                          <h3 class="block">Confirm client details</h3>
+                            <h3 class="block">Confirm client details</h3>
                             <h4 class="form-section">Client Details</h4>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Client Name:</label>
-                                <div class="col-md-4">
-                                    <p class="form-control-static" data-display="company_name"> </p>
-                                </div>
+                              <label class="control-label col-md-3">Client Name:</label>
+                              <div class="col-md-4">
+                                <p class="form-control-static" data-display="company_master[company_name]"> </p>
+                              </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Owner Name:</label>
-                                <div class="col-md-4">
-                                    <p class="form-control-static" data-display="company_owner_name"> </p>
-                                </div>
+                              <label class="control-label col-md-3">Owner Name:</label>
+                              <div class="col-md-4">
+                                <p class="form-control-static" data-display="company_master[company_owner_name]"> </p>
+                              </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Email:</label>
-                                <div class="col-md-4">
-                                    <p class="form-control-static" data-display="email"> </p>
-                                </div>
+                              <label class="control-label col-md-3">Email:</label>
+                              <div class="col-md-4">
+                                <p class="form-control-static" data-display="company_master[company_owner_email]"> </p>
+                              </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">PAN NO:</label>
-                                <div class="col-md-4">
-                                    <p class="form-control-static" data-display="company_pan_no"> </p>
-                                </div>
+                              <label class="control-label col-md-3">PAN NO:</label>
+                              <div class="col-md-4">
+                                <p class="form-control-static" data-display="company_master[company_pan_no]"> </p>
+                              </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Establish Date:</label>
-                                <div class="col-md-4">
-                                    <p class="form-control-static" data-display="establish_dt"> </p>
-                                </div>
+                              <label class="control-label col-md-3">Establish Date:</label>
+                              <div class="col-md-4">
+                                <p class="form-control-static" data-display="company_master[company_establish_dt]"> </p>
+                              </div>
                             </div>
                             <h4 class="form-section">GSTIN Details</h4>
                             <div class="form-group">
-                                <label class="control-label col-md-3">GSTIN:</label>
-                                <div class="col-md-4">
-                                    <p class="form-control-static" data-display="gstin_no"> </p>
-                                </div>
+                              <label class="control-label col-md-3">GSTIN:</label>
+                              <div class="col-md-4">
+                                <p class="form-control-static" data-display="company_master[gstins_attributes][0][gstin_no]"> </p>
+                              </div>
                             </div>
                         </div>
-                      </div>
                     </div>
-                    <div class="form-actions">
-                      <div class="row">
-                        <div class="col-md-offset-3 col-md-9">
-                          <a href="javascript:;" class="btn default button-previous" id= "back_btn">
-                          <i class="fa fa-angle-left" ></i> Back </a>
-                          <a href="javascript:;" class="btn btn-outline green button-next" id="next_btn"> Continue
+                </div>
+                <div class="form-actions">
+                  <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                      <a href="javascript:;" class="btn default button-previous" id= "back_btn">
+                        <i class="fa fa-angle-left" ></i> Back </a>
+                        <a href="javascript:;" class="btn btn-outline green button-next" id="next_btn"> Continue
                           <i class="fa fa-angle-right"></i>
-                          </a>
-                          <%= f.submit "Submit", class: "btn green button-submit"%>
+                        </a>
+                          <%= f.submit("Submit", class:"btn green button-submit", data: {:confirm => msg('Add'), :disable_with => 'Adding'}) %>
                           <!-- <a href="javascript:;" class="btn green button-submit"> Submit -->
                           <i class="fa fa-check"></i>
-                          </a>
-                        </div>
-                      </div>
+                        </a>
                     </div>
                   </div>
-                <!-- </form> -->
-                <%end%>
-              </div>
+                </div>
+                
             </div>
-          </div>
-        </div>
-      </div>
+        <%# end %>
     </div>
-  </div>
-
-<style>
-.has-error .form-control {
-  border-color: #e73d4a !important;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-}  
-</style>
+</div>
 
 <%= javascript_include_tag 'custom/app.min.js', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'custom/form-wizard.min.js', 'data-turbolinks-track' => true %>
