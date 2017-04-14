@@ -1,5 +1,5 @@
 $(function() {
-$("#company_master_company_establish_dt").datepicker({
+$("#client_establish_dt").datepicker({
         changeMonth: true,
         changeYear: true,
         format: 'dd/mm/yyyy',

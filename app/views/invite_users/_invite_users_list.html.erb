@@ -1,6 +1,6 @@
 <% def msg(status) return "#{status}します、よろしいでしょうか？" end %>
 <div class="col-md-8 col-md-offset-2">
-    <h2>Authourized User's List</h2>
+    <h2>Authourized User's List</h2><span style="color:red;">Please refresh the page after edit the data.(working on that issue.)</span>
     <div class="panel panel-default">
         <div class="panel-body">
             <table class="table table-stripped">
@@ -21,9 +21,9 @@
                             <td><%= user.email %></td>
                             <td>
                                 <% if user.is_admin %>
-                                    <input type="checkbox" checked disabled data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                                    <input type="checkbox" id="toggle-admin" checked disabled data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
                                 <% else %>
-                                    <input type="checkbox" disabled data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                                    <input type="checkbox" id="toggle-admin" disabled data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
                                 <% end %>
                             </td>
                             <td>
@@ -35,9 +35,12 @@
                             </td>
                             <td><%= user_status(user) %></td>
                             <td class="form-group">
-                                <%= link_to :controller => 'invite_users', :action => 'edit', :id => user.id  do %>
-                                  <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                                <% end %>
+                                <% if user.is_admin || user.invitation_accepted? %>
+                                    <%#= link_to :controller => 'invite_users', :action => 'edit', :id => user.id, data: {target: "#myModal", toggle: "modal"} do %>
+                                    <%= link_to edit_user_path(user), remote: true  do %>
+                                      <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                    <% end %>
+                                <% end %>    
                                 
                                 <%= link_to user, method: :delete, data: { confirm: 'Do you want to delete the record？' }  do %>
                                     <i class="fa fa-trash-o fa-2x" style="color:red;"></i>
@@ -49,11 +52,6 @@
             </table>
             
             <h3 class="extra-margin-top">Invite User</h3>
-            <%#= form_for(User.new, url: user_invitation_path, html: { class: "form-inline" }) do | f |  %>
-                <%#= f.email_field :email, placeholder: 'Email', label: false, class: "form-control" %>
-                <%#= f.submit("Invite User", class:"btn btn-primary", data: {:confirm => msg('Invite User'), :disable_with => 'Invite User'}) %>
-            <%# end %>
-            
             <%= simple_form_for(User.new, url: user_invitation_path, html: { class: "form-inline", method: :post }) do | f |  %>
                 <%= f.input :email, placeholder: 'Email', label: false, class: "form-control" %>
                 <%= f.button :submit, 'Invite User', class:"btn btn-primary" %>
@@ -64,9 +62,11 @@
 
 <script>
   $(function() {
-    $('#toggle-yes').bootstrapToggle({
+    $('#toggle-admin').bootstrapToggle({
       on: 'Yes',
       off: 'No'
     });
   })
 </script>
+
+<div id="user-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

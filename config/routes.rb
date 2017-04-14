@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :users#, only: :index
     resources :payments, only: [:new, :create]
     resources :plans, only: [:index]
-    resources :company_masters
+    resources :clients
   end  
   
   constraints(SubdomainBlank) do 

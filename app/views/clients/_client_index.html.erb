@@ -1,5 +1,5 @@
 <% def msg(status) return "#{status}します、よろしいでしょうか？" end %>
-<%= link_to new_company_master_path, class: "btn btn-large btn-primary" do %>
+<%= link_to new_client_path, class: "btn btn-large btn-primary" do %>
 <i class="fa fa-user-plus" aria-hidden="true"></i> Add Clients
 <% end %>
 <div class="col-md-8 col-md-offset-2">
@@ -9,23 +9,23 @@
             <table class="table table-stripped">
                 <thead>
                     <tr>
-                        <th>Company Name</th>
+                        <th>Client Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% @companies.each do | cmpy | %>
+                    <% @clients.each do | client | %>
                         <tr>
-                            <td><%= cmpy.company_name %></td>
+                            <td><%= client.client_name %></td>
                             <td>
                                 <%= submit_tag "Work On This", :class => "button", :onclick => "alert('Working on this!')" %>
                             </td>
                             <td class="form-group">
-                                <%= link_to :controller => 'company_masters', :action => 'edit', :id => cmpy.id  do %>
+                                <%= link_to :controller => 'clients', :action => 'edit', :id => client.id  do %>
                                   <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                 <% end %>
                                 
-                                <%= link_to cmpy, method: :delete, data: { confirm: 'Do you want to delete the record？' }  do %>
+                                <%= link_to client, method: :delete, data: { confirm: 'Do you want to delete the record？' }  do %>
                                     <i class="fa fa-trash-o fa-2x" style="color:red;"></i>
                                 <% end %> 
                             </td>

@@ -1,3 +1,4 @@
+<% def msg(status) return "#{status}" end %>
 <div class="col-md-6 col-md-offset-3 panel panel-default">
     <div class="panel-body">
         <h2>Create an Acccount</h2>
@@ -46,8 +47,7 @@
                 </div>
             <% end %>
             <%#= f.hidden_field :plan_id, :value => params[:plan_id] %>
-            <%= f.hidden_field :plan_id %>
-            <%= f.submit class: "btn btn-primary" %>
+            <%= f.submit("Create Account", class:"btn btn-primary", data: {:confirm => msg('Do you want to create account?'), :disable_with => 'Creating'}) %>
         <% end %>
     </div>    
 </div>

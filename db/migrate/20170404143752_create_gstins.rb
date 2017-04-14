@@ -1,7 +1,7 @@
 class CreateGstins < ActiveRecord::Migration
   def change
     create_table :gstins do |t|
-      t.belongs_to :company_master, index: true
+      t.belongs_to :client, index: true
       t.string :gstin_no
       t.string :created_by
       t.string :updated_by

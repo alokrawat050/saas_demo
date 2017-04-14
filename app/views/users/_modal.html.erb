@@ -1,0 +1,75 @@
+<!-- Modal -->
+<div class="modal-dialog">
+  <div class="modal-content">
+    <%= form_for(@invite_user, remote: true) do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">New/Editing User's</h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Update User Access</div>
+          <div class="panel-body">
+          	<div class="row">
+                  <!-- username -->
+                  <div class="col-xs-4 col-sm-2 col-md-3 col-md-6">
+                      <label for="input">UserName</label><lable style="color: red"><b> *</b></label>
+                      <div  class="form-group">
+                          <%= f.text_field :username, maxlength: 50, class: "form-control", placeholder: 'UserName', :disabled => 'true'  %>
+                      </div>
+                  </div>
+                                  
+                  <!-- email -->
+                  <div class="col-xs-8 col-sm-2 col-md-6 col-md-6">
+                      <label for="input">Email ID</label><lable style="color: red"><b> *</b></label>
+                      <div  class="form-group">
+                          <%= f.text_field :email, maxlength: 150, autocomplete: "off", class: "form-control",placeholder: "Email",:disabled => 'true' %>
+                      </div>
+                  </div>
+                  
+                  <!-- is_admin -->
+                  <div class="col-xs-8 col-sm-2 col-md-6 col-md-6">
+                      <label for="input">Admin</label><lable style="color: red"><b> *</b></label>
+                      <div  class="form-group">
+                          <%= f.check_box :is_admin, {:id => "toggle-is_admin"}, data: {:toggle => "toggle" } %>
+                      </div>
+                  </div>
+                  
+                  <!-- is_user_active -->
+                  <div class="col-xs-8 col-sm-2 col-md-6 col-md-6">
+                      <label for="input">User Active</label><lable style="color: red"><b> *</b></label>
+                      <div  class="form-group">
+                          <%= f.check_box :is_user_active, {:id => "toggle-is_user_active"}, data: {:toggle => "toggle" } %>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit "Save", :class => "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $('#toggle-is_admin').bootstrapToggle({
+      on: 'Yes',
+      off: 'No',
+      onstyle: 'success',
+      offstyle: "danger"
+    });
+    $('#toggle-is_user_active').bootstrapToggle({
+      on: 'Yes',
+      off: 'No',
+      onstyle: 'success',
+      offstyle: "danger"
+    });
+  })
+</script>

@@ -38,7 +38,7 @@ module Workspace
     config.active_job.queue_adapter = :delayed_job
     config.action_mailer.perform_deliveries = true
     
-    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.delivery_method = :smtp #:ses
     ActionMailer::Base.smtp_settings = {
     address: "smtp.gmail.com",
     enable_starttls_auto: true,

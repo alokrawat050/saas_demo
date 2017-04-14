@@ -51,7 +51,7 @@
                                 <span class="required"> * </span>
                               </label>
                               <div class="col-md-4">
-                                <%= f.text_field :company_name, class: "form-control fields", placeholder: "Client Name" %>
+                                <%= f.text_field :client_name, class: "form-control fields", placeholder: "Client Name" %>
                                 <!--<span class="help-block"> Provide your client name </span>-->
                               </div>
                             </div>
@@ -60,7 +60,7 @@
                               <span class="required"> * </span>
                               </label>
                               <div class="col-md-4">
-                              <%= f.text_field :company_owner_name, class: "form-control fields", placeholder: "Owner Name" %>
+                              <%= f.text_field :owner_name, class: "form-control fields", placeholder: "Owner Name" %>
                               </div>
                             </div>
                             <div class="form-group">
@@ -68,7 +68,7 @@
                                 <span class="required"> * </span>
                               </label>
                               <div class="col-md-4">
-                                <%= f.text_field :company_owner_email, class: "form-control fields", placeholder: "Email ID" %>
+                                <%= f.text_field :owner_email, class: "form-control fields", placeholder: "Email ID" %>
                               </div>
                             </div>
                             <div class="form-group">
@@ -76,7 +76,7 @@
                                 <span class="required"> * </span>
                               </label>
                               <div class="col-md-4">
-                                <%= f.text_field :company_pan_no, class: "form-control fields",  placeholder: "PAN NO", size: 13 %>
+                                <%= f.text_field :client_pan_no, class: "form-control fields",  placeholder: "PAN NO", size: 13 %>
                               </div>
                             </div>
                             <div class="form-group">
@@ -84,12 +84,28 @@
                                 <!--<span class="required"> * </span>-->
                               </label>
                               <div class="col-md-4">
-                                <%= f.text_field :company_establish_dt, class: "form-control fields", size: 10, placeholder: "Establish Date" %>
+                                <%= f.text_field :establish_dt, class: "form-control fields", size: 10, placeholder: "Establish Date" %>
                               </div>
                             </div>
                         </div>
                         <div class="tab-pane" id="tab2">
                             <h3 class="block">Provide your GSTIN details</h3>
+                            <div class="form-group">
+                              <label class="control-label col-md-3">GST Username
+                                <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-4">
+                                <%= f.text_field :gst_username, class: "form-control fields", size: 50, placeholder: "GST Username" %>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label col-md-3">GST Password
+                                <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-4">
+                                <%= f.password_field :gst_password, class: "form-control fields", size: 50, placeholder: "GST Password" %>
+                              </div>
+                            </div>
                             <div class="form-group">
                               <label class="control-label col-md-3">GSTIN
                                 <span class="required"> * </span>
@@ -97,9 +113,9 @@
                               <div class="col-md-4">
                                 <%= f.fields_for :gstins do |o| %>
                                   <%#= form_group_for o, :gstin_no, label: true  do %>
-                                  <div class="form-group">
+                                  <!--<div class="form-group">-->
                                     <%= o.text_field :gstin_no, class: 'form-control fields', placeholder: 'GSTIN' %>
-                                  </div>
+                                  <!--</div>-->
                                   <%# end %>
                                 <% end %>
                                 <%= link_to_add_fields "Add GSTIN", f, :gstins %>
@@ -112,38 +128,50 @@
                             <div class="form-group">
                               <label class="control-label col-md-3">Client Name:</label>
                               <div class="col-md-4">
-                                <p class="form-control-static" data-display="company_master[company_name]"> </p>
+                                <p class="form-control-static" data-display="client[client_name]"> </p>
                               </div>
                             </div>
                             <div class="form-group">
                               <label class="control-label col-md-3">Owner Name:</label>
                               <div class="col-md-4">
-                                <p class="form-control-static" data-display="company_master[company_owner_name]"> </p>
+                                <p class="form-control-static" data-display="client[owner_name]"> </p>
                               </div>
                             </div>
                             <div class="form-group">
                               <label class="control-label col-md-3">Email:</label>
                               <div class="col-md-4">
-                                <p class="form-control-static" data-display="company_master[company_owner_email]"> </p>
+                                <p class="form-control-static" data-display="client[owner_email]"> </p>
                               </div>
                             </div>
                             <div class="form-group">
                               <label class="control-label col-md-3">PAN NO:</label>
                               <div class="col-md-4">
-                                <p class="form-control-static" data-display="company_master[company_pan_no]"> </p>
+                                <p class="form-control-static" data-display="client[client_pan_no]"> </p>
                               </div>
                             </div>
                             <div class="form-group">
                               <label class="control-label col-md-3">Establish Date:</label>
                               <div class="col-md-4">
-                                <p class="form-control-static" data-display="company_master[company_establish_dt]"> </p>
+                                <p class="form-control-static" data-display="client[establish_dt]"> </p>
                               </div>
                             </div>
                             <h4 class="form-section">GSTIN Details</h4>
                             <div class="form-group">
+                              <label class="control-label col-md-3">GST Username:</label>
+                              <div class="col-md-4">
+                                <p class="form-control-static" data-display="client[gst_username]"> </p>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label col-md-3">GST Password:</label>
+                              <div class="col-md-4">
+                                <p class="form-control-static" data-display="client[gst_password]">********* </p>
+                              </div>
+                            </div>
+                            <div class="form-group">
                               <label class="control-label col-md-3">GSTIN:</label>
                               <div class="col-md-4">
-                                <p class="form-control-static" data-display="company_master[gstins_attributes][0][gstin_no]"> </p>
+                                <p class="form-control-static" data-display="client[gstins_attributes][0][gstin_no]"> </p>
                               </div>
                             </div>
                         </div>
@@ -175,4 +203,4 @@
 <%= javascript_include_tag 'custom/jquery.bootstrap.wizard.min.js', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'custom/select2.full.min.js', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'custom/additional-methods.min.js', 'data-turbolinks-track' => true %>
-<%= javascript_include_tag 'custom/company_master.js', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'custom/client.js', 'data-turbolinks-track' => true %>

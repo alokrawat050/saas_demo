@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   
   def index
     #find all client details
-    @companies = CompanyMaster.all.order(:id)
+    @clients = Client.all.order(:id)
     
     #find all team mates details
     @invite_users = User.all.order(:id)

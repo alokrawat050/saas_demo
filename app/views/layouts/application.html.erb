@@ -16,7 +16,6 @@
 <header class="container">
   <nav class="navbar navbar-default">
     <div class="navbar-header">
-      <%#= link_to 'dummy', root_path, class: 'navbar-brand' %>
       <% if get_subdomain.nil? %>
         <%= link_to 'dummy', root_path, class: 'navbar-brand' %>
       <% else %>
@@ -44,9 +43,13 @@
                   <i class="fa fa-key" aria-hidden="true"></i> Password Update
                 <% end %>
               </li>
-              <li><%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to sign out?' } do %>
-                  <i class="fa fa-sign-out" aria-hidden="true"></i> Sign out
-                <% end %>
+              <li><%#= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to sign out?' } do %>
+                  <%#= link_to destroy_user_session_path, data: {toggle: "modal", target: "..bs-example-modal-sm"} do %>
+                    <!--<i class="fa fa-sign-out" aria-hidden="true"></i> Sign out-->
+                  <%# end %>
+                  <a data-toggle="modal" data-target=".bs-example-modal-md">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Sign out
+                  </a>
               </li>
             </ul>
           </li>
@@ -69,16 +72,24 @@
   <div class="row">
     <%= yield %>
   </div>  
-</div>  
-<!--<div class="remodal" data-remodal-id="modal">-->
-<!--  <button data-remodal-action="close" class="remodal-close"></button>-->
-<!--  <h1>Remodal</h1>-->
-<!--  <p>-->
-<!--    Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.-->
-<!--  </p>-->
-<!--  <br>-->
-<!--  <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>-->
-<!--  <button data-remodal-action="confirm" class="remodal-confirm">OK</button>-->
-<!--</div>-->
+</div>
 </body>
 </html>
+
+<div class="modal bs-example-modal-md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+    <div class="modal-header">
+      <h3>確認</h3>
+    </div>
+    <div class="modal-body">
+    <ul class="errors"></ul>
+    Do you want to sign-out?
+    </div>
+    <div class="modal-footer">
+      <%= link_to "Yes", destroy_user_session_path, method: :delete, class: "btn btn-success" %>
+      <%= link_to "No", "#", class: "btn btn-default", data: { dismiss: "modal" } %>
+    </div>
+    </div>
+  </div>
+</div>

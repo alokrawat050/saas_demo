@@ -4,12 +4,14 @@
   <div class="col-md-4 col-md-offset-4 well">
     <div>
       <label for="card-number">Card Number:</label>
-      <input id="card-number" type="text" data-stripe="number" class="form-control card__input card__input_number" name="card_name" placeholder="XXXX XXXX XXXX XXXX" pattern="[0-9]{14,23}" />
+      <input id="card-number" type="text" data-stripe="number" class="form-control card__input card__input_number" name="card_name" placeholder="XXXX XXXX XXXX XXXX" />
+       <!--pattern="[0-9]{14,23}"-->
     </div>
   
     <div>
       <label for="card-exp-month">Card Expiry Month:</label>
       <input id="card-exp-month" type="text" data-stripe="exp_month" class="form-control" />
+      <%#= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card-exp-month"} %>
       <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card-exp-month"} %>
     </div>
   
