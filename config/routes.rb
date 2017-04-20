@@ -44,7 +44,8 @@ Rails.application.routes.draw do
     root 'welcome#index'
     resources :accounts, only: [:new, :create]
     resources :welcome do
-      collection { post :find_team }
+      collection { post :find_team
+      post :send_customer_mail }
     end
   end  
   # The priority is based upon order of creation: first created -> highest priority.

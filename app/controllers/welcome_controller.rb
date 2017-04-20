@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  skip_before_filter :authenticate_user!, only: [:index, :find_team]
+  skip_before_filter :authenticate_user!, only: [:index, :find_team, :send_customer_mail]
   def index
   end
 
@@ -17,6 +17,15 @@ class WelcomeController < ApplicationController
       flash[:alert] = "Please Enter the Team Name."
       redirect_to root_path
     end
+  end
+  
+  def send_customer_mail
+    if params[:email].present? && !params[:email].nil? && !params[:email].blank?
+      Notifications.send_customer_mail(params[:email], params[:name], params[:subject], params[:message] )
+      redirect_to root_path, :notice => "Mail Successfull Send."
+    else
+      redirect_to root_path, :alert => "Please Enter Mandatory Field."
+    end  
   end
   
   protected

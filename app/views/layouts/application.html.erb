@@ -32,11 +32,6 @@
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right text-uppercase">
-						<li><a href="#home">Home</a></li>
-						<li><a href="#feature">Features</a></li>
-						<li><a href="#pricing">Pricing</a></li>
-						<li><a href="#download">Download</a></li>
-						<li><a href="#contact">Contact</a></li>
 						<% if user_signed_in? %>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -64,8 +59,15 @@
                 </ul>
               </li>
             <% else %>
-              <li><%#= link_to 'Log In', new_user_session_path %></li>
-              <li><%#= link_to 'Sign Up', new_user_registration_path %></li>
+              <% if get_subdomain.nil? %>
+                <li><a href="#home">Home</a></li>
+    						<li><a href="#feature">Features</a></li>
+    						<li><a href="#pricing">Pricing</a></li>
+    						<li><a href="#download">Download</a></li>
+    						<li><a href="#contact">Contact</a></li>
+                <li><%#= link_to 'Log In', new_user_session_path %></li>
+                <li><%#= link_to 'Sign Up', new_user_registration_path %></li>
+              <% end %>  
             </ul>
           <% end %>  
 					</ul>
@@ -75,6 +77,16 @@
 		<!-- end navigation -->
 
     <%= yield %>
+  <!-- start footer -->
+  <footer>
+  	<div class="container">
+  		<div class="row">
+  		  <hr>
+  			<p>Copyright © 2017 OneTaxGST</p>
+  		</div>
+  	</div>
+  </footer>
+  <!-- end footer -->  
 </body>
 </html>
 

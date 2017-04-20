@@ -5,7 +5,12 @@
           message: "<%= alert %>"
           },{
           type: 'danger',
-          newest_on_top: false
+          newest_on_top: false,
+            position: {
+                from: "bottom",
+                align: "right"
+            },
+            delay: 500000
         });
     });
     </script>
@@ -19,9 +24,10 @@
             message: "<%= notice %>"
         }, {
             type: 'success',
+            newest_on_top: false,
             position: {
-                from: "top",
-                align: "left"
+                from: "bottom",
+                align: "right"
             },
             delay: 500000
         });

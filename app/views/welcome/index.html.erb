@@ -67,14 +67,14 @@
 	<div class="container">
 		<div class="row">
 		    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-				<img src="/assets/software-img.png" class="img-responsive" alt="feature img">
+				<img src="/assets/find_team_img.png" class="img-responsive" alt="feature img" width="300px" height="200px">
 			</div>
 			<div class="col-xs-6 col-sm-8 col-lg-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
 				<div class="form_group">
                     <div class="form-inline">
-                        <h4><span class="label label-info">If already joined with us, then please provide the your team name.</span></h4>
+                        <p>If already joined with us, then please provide the your team name.</p>
                         <%= form_tag(:action => 'find_team') do |f| %>
-                            <%= text_field_tag 'team_name', @team_name, class: "form-control btn-lg", placeholder: "Team Name" %>
+                            <%= text_field_tag 'team_name', @team_name, class: "form-control btn-lg", placeholder: "Team Name", style: "height:50px" %>
                             <%= button_tag(type: "submit", class: "btn btn-default") do %>
                                 <i class="fa fa-search" aria-hidden="true"></i> Find Team
                             <% end %>
@@ -138,23 +138,32 @@
 				</div>
 				<div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
 					<div class="contact-form">
-						<form action="#" method="post">
+						<%= form_tag(:action => 'send_customer_mail') do |f| %>
+						<!--<form action="#" method="post">-->
 							<div class="col-md-6">
-								<input type="text" class="form-control" placeholder="Name">
+								<!--<input type="text" class="form-control" placeholder="Name">-->
+								<%= text_field_tag 'name', @name, class: "form-control btn-lg", placeholder: "Name" %>
 							</div>
 							<div class="col-md-6">
-								<input type="email" class="form-control" placeholder="Email">
+								<!--<input type="email" class="form-control" placeholder="Email">-->
+								<%= email_field_tag 'email', @email, class: "form-control btn-lg", placeholder: "Email" %>
 							</div>
 							<div class="col-md-12">
-								<input type="text" class="form-control" placeholder="Subject">
+								<!--<input type="text" class="form-control" placeholder="Subject">-->
+								<%= text_field_tag 'subject', @subject, class: "form-control btn-lg", placeholder: "Subject" %>
 							</div>
 							<div class="col-md-12">
-								<textarea class="form-control" placeholder="Message" rows="4"></textarea>
+								<!--<textarea class="form-control" placeholder="Message" rows="4"></textarea>-->
+								<%= text_area_tag 'message', @message, class: "form-control btn-lg", placeholder: "Message" %>
 							</div>
 							<div class="col-md-8">
-								<input type="submit" class="form-control text-uppercase" value="Send">
+								<!--<input type="submit" class="form-control text-uppercase" value="Send">-->
+								<%= button_tag(type: "submit", class: "btn btn-info form-control text-uppercase") do %>
+	                                <i class="fa fa-paper-plane" aria-hidden="true"></i> Send
+	                            <% end %>
 							</div>
-						</form>
+						<!--</form>-->
+						<% end %>
 					</div>
 				</div>
 			</div>
@@ -163,21 +172,9 @@
 </section>
 <!-- end contact -->
 
-<!-- start footer -->
-<footer>
-	<div class="container">
-		<div class="row">
-			<p>Copyright © 2017 OneTaxGST</p>
-		</div>
-	</div>
-</footer>
-<!-- end footer -->
+<%= stylesheet_link_tag    'custom/animate.min', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag    'custom/templatemo-style', media: 'all', 'data-turbolinks-track' => true %>
 
 <%= javascript_include_tag 'custom/wow.min.js', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'custom/custom.js', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'custom/jquery.singlePageNav.min.js', 'data-turbolinks-track' => true %>
-<!--<script src="js/jquery.js"></script>-->
-<!--<script src="js/bootstrap.min.js"></script>-->
-<!--<script src="js/wow.min.js"></script>-->
-<!--<script src="js/jquery.singlePageNav.min.js"></script>-->
-<!--<script src="js/custom.js"></script>-->

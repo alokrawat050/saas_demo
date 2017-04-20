@@ -142,48 +142,48 @@ img
 /* end preloader */
 
 /* start navigation */
-.navbar-default
-    {
-        background: #fff;
-        border: none;
-        box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.08);
-        margin: 0!important;
-    }
-.navbar-default .navbar-brand
-    {
-        color: #28a7e9;
-        font-size: 30px;
-        font-weight: bold;
-        height: 70px;
-        line-height: 35px;
-    }
-.navbar-default .nav li a
-    {
-        color: #666;
-        font-size: 13px;
-        font-weight: bold;
-        height: 70px;
-        line-height: 40px;
-    }
-.navbar-default .nav li a:hover,
-.navbar-default .nav li a:focus,
-.navbar-default .nav li a.current
-    {
-        color: #28a7e9;
-    }
+/*.navbar-default*/
+/*    {*/
+/*        background: #fff;*/
+/*        border: none;*/
+/*        box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.08);*/
+/*        margin: 0!important;*/
+/*    }*/
+/*.navbar-default .navbar-brand*/
+/*    {*/
+/*        color: #28a7e9;*/
+/*        font-size: 30px;*/
+/*        font-weight: bold;*/
+/*        height: 70px;*/
+/*        line-height: 35px;*/
+/*    }*/
+/*.navbar-default .nav li a*/
+/*    {*/
+/*        color: #666;*/
+/*        font-size: 13px;*/
+/*        font-weight: bold;*/
+/*        height: 70px;*/
+/*        line-height: 40px;*/
+/*    }*/
+/*.navbar-default .nav li a:hover,*/
+/*.navbar-default .nav li a:focus,*/
+/*.navbar-default .nav li a.current*/
+/*    {*/
+/*        color: #28a7e9;*/
+/*    }*/
 
-.navbar-default .navbar-toggle
-    {
-        border: none;
-        padding-top: 20px;
-    }
-.navbar-default .navbar-toggle .icon-bar
-    {
-        background: #28a7e9;
-        border-color: transparent;
-    }
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus { background-color: transparent }
+/*.navbar-default .navbar-toggle*/
+/*    {*/
+/*        border: none;*/
+/*        padding-top: 20px;*/
+/*    }*/
+/*.navbar-default .navbar-toggle .icon-bar*/
+/*    {*/
+/*        background: #28a7e9;*/
+/*        border-color: transparent;*/
+/*    }*/
+/*.navbar-default .navbar-toggle:hover,*/
+/*.navbar-default .navbar-toggle:focus { background-color: transparent }*/
 /* end navigation */
 
 /* start home */       
@@ -192,7 +192,7 @@ img
     background: url('/assets/home-bg.jpg') no-repeat;
     background-size: cover;
     color: #fff;
-    margin-top: 70px;
+    margin-top: 45px;
     text-align: center;
     width: 100%;
     }

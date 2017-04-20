@@ -12,4 +12,13 @@ class Notifications < ActionMailer::Base
 
     mail to: user.email
   end
+  
+  def send_customer_mail(frmMail, name, subject, message)
+    @frmMail = frmMail
+    @name = name
+    @subject = subject
+    @message = message
+    toMail = "alok.uks@gmail.com"
+    mail to: toMail
+	end
 end
