@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-12 wow bounceIn">
+    	<h2 class="text-uppercase">Our Pricing</h2>
+    </div>
+    <% @plans = Plan.order("price") %>
+    <% @plans.each do |plan| %>
+    	<div class="col-md-4 wow fadeIn" data-wow-delay="0.6s">
+    		<div class="pricing text-uppercase">
+    			<div class="pricing-title">
+    				<h4><%= plan.name %></h4>
+    				<p><%= number_to_currency plan.price, :precision => 0 %></p>
+    				<small class="text-lowercase">monthly</small>
+    			</div>
+    			<ul>
+    				<li>6 GB Space</li>
+    				<li>600 GB Bandwidth</li>
+    				<li>60 More Themes</li>
+    				<li>Lifetime Support</li>
+    			</ul>
+    			<%= link_to "Subscribe", new_account_path(:plan_id => plan.id) %>
+    		</div>
+    	</div>
+    <% end %>
+</div>

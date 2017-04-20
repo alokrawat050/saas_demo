@@ -1,22 +1,30 @@
-<% if !notice.blank? %>
-    <script>
-      $(document).ready(function () {
-        $.notify({
-          message: "<%= notice %>"
-          },{
-          type: 'success'
-        });
-    });
-    </script>
-<% end %>
 <% if !alert.blank? %>
     <script>
       $(document).ready(function () {
         $.notify({
           message: "<%= alert %>"
           },{
-          type: 'danger'
+          type: 'danger',
+          newest_on_top: false
         });
     });
     </script>
+<% end %>
+
+<% if !notice.blank? %>
+  <script>
+    $(document).ready(function () {
+        $.notify({
+        // $('.notification').notify({  
+            message: "<%= notice %>"
+        }, {
+            type: 'success',
+            position: {
+                from: "top",
+                align: "left"
+            },
+            delay: 500000
+        });
+    });
+  </script>
 <% end %>

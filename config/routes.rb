@@ -34,6 +34,10 @@ Rails.application.routes.draw do
     resources :payments, only: [:new, :create]
     resources :plans, only: [:index]
     resources :clients
+    resources :data_imports do 
+      collection { post :export_to_xml }
+    end
+      #, only: [:index]
   end  
   
   constraints(SubdomainBlank) do 
