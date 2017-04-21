@@ -169,10 +169,10 @@ footer
 /*    }*/
 /*}*/
 /* start media 360 */
-@media screen and ( max-width: 360px ){
-    .pricing
-        {
-            padding-bottom: 40px;
-        }
-}
+/*@media screen and ( max-width: 360px ){*/
+/*    .pricing*/
+/*        {*/
+/*            padding-bottom: 40px;*/
+/*        }*/
+/*}*/
 /* end media 360 */

@@ -24,7 +24,7 @@
 					</button>
 					<% if get_subdomain.nil? %>
             <%= link_to root_path, class: 'navbar-brand' do %>
-              <img src="assets/onetaxgst_logo.png" width="100px" height="60px" style="margin: -30px auto 0 auto;" >
+              <img src="assets/onetaxgst_logo.png" width="100px" height="100px" style="margin: -30px auto 0 auto;">
             <% end %>
           <% else %>
             <%= link_to get_subdomain.upcase, root_path, class: 'navbar-brand' %>
