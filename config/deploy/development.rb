@@ -1,5 +1,5 @@
 set :stage, :development
-set :deploy_to, '/home/gst'
+set :deploy_to, '/home/gstdev/gst'
 
 # Extended Server Syntax
 # ======================

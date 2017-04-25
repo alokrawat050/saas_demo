@@ -38,6 +38,8 @@ Rails.application.routes.draw do
       collection { post :export_to_xml }
     end
     get 'form_infos/index'
+    get 'form_infos/multiple_gstin'
+    post 'form_infos/gstin_selection'
   end  
   
   constraints(SubdomainBlank) do 

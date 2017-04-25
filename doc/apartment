@@ -1,1 +1,3 @@
 Apartment::Tenant.drop('uks')
+
+Apartment::Tenant.switch('uks')

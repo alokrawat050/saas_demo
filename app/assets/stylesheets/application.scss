@@ -22,17 +22,18 @@
 .main_block {
   width: 350px;
   margin-bottom: 1px;
-}
-.main_block {
   display: block;
-  background-color: #ccc;
-  color: #000;
+  background-color: #00ced1;
+  color: #ffffff;
   text-decoration: none;
   padding: 10px;
   margin: 0px 0px 10px 10px;
+  box-shadow: 5px 5px 5px #888888;
 }
 .main_block:hover {
-  background-color: #ddd;
+  background-color: #f5f5f5;
+  transition: all .01s ease-in-out;
+  transform: scale(1.05);
 }
 // for form_info/index end
 

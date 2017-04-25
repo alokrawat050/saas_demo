@@ -24,7 +24,11 @@
                         <tr>
                             <td><%= client.client_name %></td>
                             <td>
-                                <%= submit_tag "Work On This", :class => "button", :onclick => "alert('Working on this!')" %>
+                                <%#= submit_tag "Work On This", :class => "button", :onclick => "alert('Working on this!')" %>
+                                <!--, :class => "btn btn-info", :onclick => "alert('Working on this!')"-->
+                                <%= link_to :controller => 'form_infos', :action => 'index', :id => client.id, :client_id => client.client_name do %>
+                                    Work On This 
+                                <% end %>    
                             </td>
                             <td class="form-group">
                                 <%= link_to :controller => 'clients', :action => 'edit', :id => client.id  do %>

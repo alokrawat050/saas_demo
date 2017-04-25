@@ -11,7 +11,7 @@ class Client < ApplicationRecord
     validates_presence_of :client_name, :message => 'Please Enter Client Name'
     validates :client_name, presence: true,
                             uniqueness: { case_sensitive: false},
-                            format: { with: /\A[\w\-]+\Z/i, message: 'contains invalid characters' },
+                            #format: { with: /\A[\w\-]+\Z/i, message: 'contains invalid characters' },
                             exclusion: {in: RESTRICTED_SUBDOMAIN, message: 'restricted'}
      
     before_validation :downcase_client_name

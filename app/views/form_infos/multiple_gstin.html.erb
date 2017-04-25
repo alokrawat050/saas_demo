@@ -1,0 +1,60 @@
+<section id ="download">
+    <% content_for :title do %>GSTIN<% end %>
+    <%= form_tag(:action => 'gstin_selection') do |f| %>	
+    	<div class="container">
+    	  <div class="row vertical-offset-100">
+    	    <div class="col-md-4 col-md-offset-4">
+    			<div class="panel panel-default">
+    				<div class="panel-heading">
+    					<h3 class="panel-title"><b>Please Select One GSTIN ID.</b></h3>
+    				</div>
+    				<div class="panel-body">
+    					<form>
+    						<div class="input-group">
+    					        <span class="input-group-addon">
+    					            <span class="fa fa-user fa-lg fa-fw"></span>
+    					         </span>	
+    					         <%= label_tag(:login_id, session[:client_name], class: "form-control") %>
+    					    </div>
+    					    <br>
+    					    <% if !@multiple_gstins.blank? %>
+    							<% @multiple_gstins.each do |gstin| %>
+    							    <% gstin.gstins.each do |x| %>
+        						        <div class="input-group">
+        						            <span class="input-group-addon">
+        						                <%= radio_button_tag :gstin_info, x.gstin_no %>
+        						            </span>				            
+        						            <%= label_tag(:gstin_numbers, x.gstin_no, class: "form-control") %>
+        						        </div>
+        						        <br>
+                                    <% end %>
+    					        <% end %>
+    					        <div class="form-group">
+    			                	<%= submit_tag("次 >>", class: "btn btn-primary") %>
+    			              	</div>
+    				        <% else %>
+    					    	<%= label_tag(:gstin_no_err, "There are no GSTIN ID Registered.", class: "form-control") %>
+    					    	
+    					    	<%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Do You Want to Logout?' }  do %>
+                              		<span class="fa fa-sign-out">&nbsp;ログアウト</span>
+                            	<% end %>
+    					    <% end %>	
+    			    	</form>	
+    				</div>
+    			</div>
+    		 </div>
+    	  </div>
+    	</div>
+    <% end %>
+    
+    <script>
+    	$(document).ready(function(){		
+    		$("input[type=submit]").click(function(){ 
+       			if ($('input[name=gstin_info]:checked').val() == undefined){
+       				alert('Please Select One GSTIN ID.');
+       				return false;
+       			}   			
+    		});
+    	});
+    </script>
+</section>
