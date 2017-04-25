@@ -9,7 +9,6 @@
  @import "typography";
  @import "bootstrap_notify";
  @import "bootstrap-toggle";
- @import "plans";
  @import "bootstrap-datepicker3";
  @import "templatemo-style-custom";
  
@@ -18,6 +17,25 @@
   background-color: red;
   display: table;
 }
+
+// for form_info/index start
+.main_block {
+  width: 350px;
+  margin-bottom: 1px;
+}
+.main_block {
+  display: block;
+  background-color: #ccc;
+  color: #000;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0px 0px 10px 10px;
+}
+.main_block:hover {
+  background-color: #ddd;
+}
+// for form_info/index end
+
 
 // for notification in screen start
 // .notifications {

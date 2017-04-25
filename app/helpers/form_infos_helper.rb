@@ -1,0 +1,2 @@
+module FormInfosHelper
+end

@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :data_imports do 
       collection { post :export_to_xml }
     end
-      #, only: [:index]
+    get 'form_infos/index'
   end  
   
   constraints(SubdomainBlank) do 
