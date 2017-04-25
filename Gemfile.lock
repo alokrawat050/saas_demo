@@ -68,6 +68,24 @@ GEM
       rails (>= 3.2.8)
     builder (3.2.3)
     byebug (9.0.6)
+    capistrano (3.4.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (~> 1.3)
+    capistrano-bundler (1.2.0)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-passenger (0.2.0)
+      capistrano (~> 3.0)
+    capistrano-rails (1.2.3)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rbenv (2.1.0)
+      capistrano (~> 3.1)
+      sshkit (~> 1.3)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
     capybara (2.13.0)
       addressable
       mime-types (>= 1.16)
@@ -192,6 +210,9 @@ GEM
     multipart-post (2.0.0)
     nenv (0.3.0)
     nested_form (0.3.2)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (4.1.0)
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
@@ -311,6 +332,9 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sshkit (1.13.0)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     storable (0.8.9)
     stripe (2.2.1)
       faraday (~> 0.9)
@@ -366,6 +390,12 @@ DEPENDENCIES
   bootstrap-toggle-rails
   bootstrap_notify
   byebug
+  capistrano (= 3.4.0)
+  capistrano-bundler
+  capistrano-passenger
+  capistrano-rails
+  capistrano-rbenv
+  capistrano-rvm
   capybara
   chosen-rails
   coffee-rails (~> 4.1.0)

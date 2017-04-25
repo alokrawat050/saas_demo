@@ -108,3 +108,10 @@ group :development do
   gem 'spring'
 end
 
+## Capistrano Deploy
+gem 'capistrano', '3.4.0'
+gem 'capistrano-rvm'
+gem 'capistrano-rails'
+gem 'capistrano-passenger'
+gem 'capistrano-rbenv'
+gem 'capistrano-bundler'
