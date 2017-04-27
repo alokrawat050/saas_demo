@@ -20,3 +20,4 @@
 //= require jquery.validate
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB
 //= require clients
+//= require nested_form_fields

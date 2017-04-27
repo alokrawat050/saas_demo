@@ -1,16 +1,32 @@
-<h2>Resend unlock instructions</h2>
+<section id="download">
+    <div class="container">
+    <div class="row">
+      <div class="col-xs-10 col-sm-12 col-md-5 col-md-offset-3 col-xs-offset-1 well signin">
+        <h2>Resend unlock instructions</h2>
 
-<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+        <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+          <%#= devise_error_messages! %>
+        
+          <%= f.label :email %><br />
+          <%= form_group_for f, :email, label: false  do %>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="fa fa-envelope fa-lg fa-fw"></span>
+                </span>
+                <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+              </div>  
+            </div>
+          <% end %>
+        
+          <div class="actions">
+            <%= f.submit "Resend unlock instructions", class: 'btn btn-primary btn-block btn-lg' %>
+          </div>
+        <% end %>
+        
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>  
+<%= stylesheet_link_tag    'custom/signin.css', 'data-turbolinks-track' => true %>

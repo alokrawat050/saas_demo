@@ -118,14 +118,25 @@
                                       <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-4">
-                                      <%= f.fields_for :gstins do |o| %>
-                                        <%#= form_group_for o, :gstin_no, label: false  do %>
-                                        <div class="form-group">
-                                          <%= o.text_field :gstin_no, class: 'form-control fields', placeholder: 'GSTIN' %>
-                                        </div>
+                                      <%#= f.fields_for :gstins do |o| %>
+                                      <%#= flash[:alert] = "#{gstins.count}" %>
+                                      <%= f.nested_fields_for :gstins do |o| %>
+                                        <div class="form-group">  
+                                          <div class="input-group">
+                                            <%#= form_group_for o, :gstin_no, label: false  do %>
+                                              <%= o.text_field :gstin_no, class: 'form-control fields', placeholder: 'GSTIN' %>
+                                              <span class="input-group-addon">
+                                                <%= o.remove_nested_fields_link data: { confirm: 'Do you want to delete?' } do %>
+                                          		    <i class="fa fa-trash-o fa-2x" style="color:red"></i>
+                                        	      <% end %>
+                                        	     </span> 
+                                        	   <%# end %>    
+                                          </div>
+                                        </div>    
                                         <%# end %>
                                       <% end %>
-                                      <%= link_to_add_fields "Add GSTIN", f, :gstins %>
+                                      <%#= link_to_add_fields "Add GSTIN", f, :gstins %>
+                                      <%= f.add_nested_fields_link :gstins, 'Add GSTIN' %>
                                     </div>
                                   </div>
                               </div>

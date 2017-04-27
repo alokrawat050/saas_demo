@@ -1,48 +1,74 @@
 <% def msg(status) return "#{status}します、よろしいでしょうか？" end %>
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div class="container">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <h2>Client's Details</h2>
-        </div>    
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align:right;" >
-            <%= link_to new_client_path, class: "btn btn-large btn-primary" do %>
-                <i class="fa fa-user-plus" aria-hidden="true"></i> Add Clients
-            <% end %>
-        </div>
-    </div>    
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <table class="table table-stripped">
-                <thead>
-                    <tr>
-                        <th>Client Name</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @clients.each do | client | %>
-                        <tr>
-                            <td><%= client.client_name %></td>
-                            <td>
-                                <%#= submit_tag "Work On This", :class => "button", :onclick => "alert('Working on this!')" %>
-                                <!--, :class => "btn btn-info", :onclick => "alert('Working on this!')"-->
-                                <%= link_to :controller => 'form_infos', :action => 'index', :id => client.id, :client_id => client.client_name do %>
-                                    Work On This 
-                                <% end %>    
-                            </td>
-                            <td class="form-group">
-                                <%= link_to :controller => 'clients', :action => 'edit', :id => client.id  do %>
-                                  <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                                <% end %>
-                                
-                                <%= link_to client, method: :delete, data: { confirm: 'Do you want to delete the record？' }  do %>
-                                    <i class="fa fa-trash-o fa-2x" style="color:red;"></i>
-                                <% end %> 
-                            </td>
-                        </tr>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <h2>Client's Details</h2>
+                </div>    
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align:right;" >
+                    <%= link_to new_client_path, class: "btn btn-large btn-primary" do %>
+                        <i class="fa fa-user-plus" aria-hidden="true"></i> Add Clients
                     <% end %>
-                </tbody>
-            </table>
+                </div>
+            </div>    
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>Client Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @clients.each do | client | %>
+                                <tr>
+                                    <td><%= client.client_name %></td>
+                                    <td>
+                                        <%#= submit_tag "Work On This", :class => "button", :onclick => "alert('Working on this!')" %>
+                                        <!--, :class => "btn btn-info", :onclick => "alert('Working on this!')"-->
+                                        <%= link_to :controller => 'form_infos', :action => 'index', :id => client.id, :client_id => client.client_name do %>
+                                            Work On This 
+                                        <% end %>    
+                                    </td>
+                                    <td class="form-group">
+                                        <%= link_to :controller => 'clients', :action => 'edit', :id => client.id  do %>
+                                          <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                        <% end %>
+                                        
+                                        <%= link_to client, method: :delete, data: { confirm: 'Do you want to delete the record？' }  do %>
+                                        <%#= link_to client, method: :delete, data: { toggle: "modal", target: "#myModal" }  do %>
+                                            <i class="fa fa-trash-o fa-2x" style="color:red;"></i>
+                                        <% end %> 
+                                        <!--<a data-toggle="modal" data-target="#myModal">-->
+                                        <!--  <i class="fa fa-trash-o fa-2x" style="color:red;"></i>-->
+                                        <!--</a>-->
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>    
         </div>
-    </div>    
+    </div>
+</div>    
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+      <h3 style="color:black;">Confirmation Alert</h3>
+    </div>
+    <div class="modal-body">
+      <ul class="errors"></ul>
+      Do you want to Delete?
+    </div>
+    <div class="modal-footer">
+      <%= link_to "No", "#", class: "btn btn-default btn-lg", data: { dismiss: "modal" } %>
+      <%= link_to "Yes", destroy_user_session_path, method: :delete, class: "btn btn-success btn-lg" %>
+    </div>
+    </div>
+  </div>
 </div>

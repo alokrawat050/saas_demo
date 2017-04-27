@@ -7,7 +7,9 @@
     </div>
     </div>
     <%= f.hidden_field :_destroy %>
+    <%= f.remove_nested_fields_link 'Remove me', class: 'btn btn-danger', role: 'button' %>
     <%= link_to '#', class: "remove_fields", data: { confirm: 'Do you want to delete?' }  do %>
+    <%#= f.remove_nested_fields_link data: { confirm: 'Do you want to delete?' } do %>
   		<i class="fa fa-trash-o fa-2x" style="color:red"></i>
 	<% end %>
 </fieldset>

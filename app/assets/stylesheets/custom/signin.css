@@ -1,5 +1,17 @@
 .signin {
-    h2 { margin-top: 0;}
-    form { margin-bottom: 20px;}
-    .glyphicon { top: 0;}
+    /*margin: 0px 0px 10px 10px;*/
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.signin h2,h3 {
+    text-align:center;
+    margin-top: 0;
+}
+
+.signin .glyphicon {
+    top: 0;
+}
+
+.signin .space_sel {
+    padding: 10px;
 }

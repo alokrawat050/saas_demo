@@ -210,6 +210,10 @@ GEM
     multipart-post (2.0.0)
     nenv (0.3.0)
     nested_form (0.3.2)
+    nested_form_fields (0.8)
+      coffee-rails (>= 3.2.1)
+      jquery-rails
+      rails (>= 3.2.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.1.0)
@@ -414,6 +418,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-validation-rails
+  nested_form_fields
   pdfkit
   pg
   puma

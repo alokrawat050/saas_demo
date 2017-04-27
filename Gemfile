@@ -59,7 +59,9 @@ gem 'geocoder'
 gem 'chosen-rails'
 gem 'select2-rails', '~> 4.0', '>= 4.0.1'
 
+#for advance form designing and nested form development
 gem 'simple_form'
+gem 'nested_form_fields'
 
 #For Excel Data Import
 gem 'roo', '~> 2.4.0'
