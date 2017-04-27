@@ -19,3 +19,4 @@
 //= require prettify
 //= require jquery.validate
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB
+//= require clients

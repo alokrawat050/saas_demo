@@ -21,7 +21,7 @@
                                   <a href="#tab1" data-toggle="tab" class="step">
                                       <span class="number"> 1 </span>
                                       <span class="desc">
-                                          <i class="fa fa-check"></i> Client Details </span>
+                                          <i class="fa fa-check"></i> Business Details </span>
                                   </a>
                               </li>
                               <li>
@@ -48,9 +48,9 @@
                               <div class="alert alert-success display-none">
                                   <button class="close" data-dismiss="alert"></button> Your form validation is successful! </div>
                               <div class="tab-pane active" id="tab1">
-                                  <h3 class="block">Provide your client details</h3>
+                                  <h3 class="block">Provide details of your Business</h3>
                                   <div class="form-group">
-                                    <label class="control-label col-md-3">Client Name
+                                    <label class="control-label col-md-3">Legal Name of Business(as per PAN)
                                       <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-4">
@@ -59,7 +59,7 @@
                                     </div>
                                   </div>
                                   <div class="form-group">
-                                    <label class="control-label col-md-3">Owner Name
+                                    <label class="control-label col-md-3">Legal Name of Business(as per current tax Act)
                                     <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-4">
@@ -67,7 +67,7 @@
                                     </div>
                                   </div>
                                   <div class="form-group">
-                                    <label class="control-label col-md-3">Owner Email ID
+                                    <label class="control-label col-md-3">Business Owner Email ID
                                       <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-4">
@@ -75,7 +75,7 @@
                                     </div>
                                   </div>
                                   <div class="form-group">
-                                    <label class="control-label col-md-3">Client PAN NO
+                                    <label class="control-label col-md-3">PAN of the Business
                                       <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-4">
@@ -83,7 +83,7 @@
                                     </div>
                                   </div>
                                   <div class="form-group">
-                                    <label class="control-label col-md-3">Establish Date
+                                    <label class="control-label col-md-3">Business Establish Date
                                       <!--<span class="required"> * </span>-->
                                     </label>
                                     <div class="col-md-4">
@@ -98,7 +98,9 @@
                                       <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-4">
-                                      <%= f.text_field :gst_username, class: "form-control fields", size: 50, placeholder: "GST Username" %>
+                                      <div class="form-group">
+                                        <%= f.text_field :gst_username, class: "form-control fields", size: 50, placeholder: "GST Username" %>
+                                      </div>
                                     </div>
                                   </div>
                                   <div class="form-group">
@@ -106,7 +108,9 @@
                                       <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-4">
-                                      <%= f.password_field :gst_password, class: "form-control fields", size: 50, placeholder: "GST Password" %>
+                                      <div class="form-group">
+                                        <%= f.password_field :gst_password, class: "form-control fields", size: 50, placeholder: "GST Password" %>
+                                      </div>
                                     </div>
                                   </div>
                                   <div class="form-group">
@@ -115,10 +119,10 @@
                                     </label>
                                     <div class="col-md-4">
                                       <%= f.fields_for :gstins do |o| %>
-                                        <%#= form_group_for o, :gstin_no, label: true  do %>
-                                        <!--<div class="form-group">-->
+                                        <%#= form_group_for o, :gstin_no, label: false  do %>
+                                        <div class="form-group">
                                           <%= o.text_field :gstin_no, class: 'form-control fields', placeholder: 'GSTIN' %>
-                                        <!--</div>-->
+                                        </div>
                                         <%# end %>
                                       <% end %>
                                       <%= link_to_add_fields "Add GSTIN", f, :gstins %>
