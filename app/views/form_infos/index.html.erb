@@ -1,9 +1,14 @@
 <section id="download">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-12 col-lg-12" style="text-align:right;margin-bottom:5px;">
-                <span class="label label-warning">Client Name:</span> <%= session[:client_name] %>
-                <span class="label label-warning">GSTIN ID:</span> <%= session[:gstin_id] %>
+            <div class="col-xs-12 col-md-12 col-lg-6">
+                <%= link_to "Change GSTIN Number", form_infos_multiple_gstin_path, class: "link" %>
+                <span class="label label-warning">Year</span> 2017
+                <span class="label label-warning">Month</span> 05
+            </div>
+            <div class="col-xs-12 col-md-12 col-lg-6" style="text-align:right;margin-bottom:5px;">
+                <span class="label label-warning">Client Name</span> <%= session[:client_name] %>
+                <span class="label label-warning">GSTIN ID</span> <%= session[:gstin_id] %>
             </div>
             <div class="col-xs-4 col-md-4 col-lg-4 main_block">
                 <div>

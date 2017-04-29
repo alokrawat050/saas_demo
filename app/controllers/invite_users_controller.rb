@@ -20,12 +20,6 @@ class InviteUsersController < ApplicationController
     end
   end
   
-  def delete
-  end
-  
-  def destroy
-  end
-  
   private
     def user_params
       params.require(:user).permit(:is_admin, :is_user_active)

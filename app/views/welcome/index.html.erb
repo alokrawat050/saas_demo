@@ -66,13 +66,13 @@
 <section id="feature1">
 	<div class="container">
 		<div class="row">
-		    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+		    <div class="col-xs-6 col-sm-12 col-lg-6 wow fadeInUp" data-wow-delay="0.6s">
 				<img src="/assets/find_team_img.png" class="img-responsive" alt="feature img" width="300px" height="200px">
 			</div>
-			<div class="col-xs-6 col-sm-8 col-lg-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-				<div class="form_group">
-                    <div class="form-inline">
-                        <p>If already joined with us, then please provide the your team name.</p>
+			<div class="col-xs-12 col-sm-12 col-lg-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+				<p>If already joined with us, then please provide the your team name.</p>
+				<div class="form-inline">
+                    <div class="form-group">
                         <%= form_tag(:action => 'find_team') do |f| %>
                             <%= text_field_tag 'team_name', @team_name, class: "form-control btn-lg", placeholder: "Team Name", style: "height:50px" %>
                             <%= button_tag(type: "submit", class: "btn btn-default") do %>

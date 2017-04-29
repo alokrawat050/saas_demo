@@ -7,7 +7,7 @@
         <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
           <%#= devise_error_messages! %>
         
-          <%= f.label :email %><br />
+          <%#= f.label :email %><br />
           <%= form_group_for f, :email, label: false  do %>
             <div class="form-group">
               <div class="input-group">

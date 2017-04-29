@@ -11,4 +11,12 @@ module ApplicationHelper
         end
         link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
     end
+    
+    def check_is_admin_rights?
+        if current_user.is_admin
+          true
+        else 
+          false
+        end
+    end
 end

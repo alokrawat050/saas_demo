@@ -24,4 +24,12 @@
   transform: scale(1.05);
   text-decoration: none !important;
 }
+
+.link {
+  color: black;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
 /*for form_info/index end*/

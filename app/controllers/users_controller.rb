@@ -25,6 +25,14 @@ class UsersController < ApplicationController
     end
   end
   
+  def delete
+  end
+  
+  def destroy
+    @invite_user.destroy
+    redirect_to root_path, :notice => "User Successfully Deleted."
+  end
+  
   private
     def user_params
       params.require(:user).permit(:is_admin, :is_user_active)

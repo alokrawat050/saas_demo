@@ -43,10 +43,12 @@
                       <i class="fa fa-cog" aria-hidden="true"></i> Setting
                     <%# end %>
                   </li>-->
-                  <li><%= link_to new_payment_path do %>
-                      <i class="fa fa-credit-card" aria-hidden="true"></i> Payment Setting
-                    <% end %>
-                  </li>
+                  <% if (check_is_admin_rights?) %>
+                    <li><%= link_to new_payment_path do %>
+                        <i class="fa fa-credit-card" aria-hidden="true"></i> Payment Setting
+                      <% end %>
+                    </li>
+                  <% end %>  
                   <li><%= link_to edit_user_registration_path do %>
                       <i class="fa fa-key" aria-hidden="true"></i> Password Update
                     <% end %>

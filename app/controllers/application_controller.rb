@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
       end
     end  
   end
-    
+  
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:accept_invitation){|u|
@@ -68,6 +68,7 @@ class ApplicationController < ActionController::Base
     end
     
     def after_invite_path_for(resource)
-      invite_users_path
+      #invite_users_path
+      root_path
     end
 end

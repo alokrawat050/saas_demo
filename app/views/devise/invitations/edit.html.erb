@@ -1,16 +1,54 @@
-<div class="col-md-6 col-md-offset-3 panel panel-default">
-  <div class="panel-body">
-    <h2>Create an Account</h2>
-
-    <%= simple_form_for resource, :as => resource_name,
-                                  :url => invitation_path(resource_name),
-                                  :html => { :method => :put } do |f| %>
-      <%= f.input :invitation_token, as: :hidden %>
-      <%= f.input :username %>
-      <%= f.input :password %>
-      <%= f.input :password_confirmation %>
-      <%= f.hidden_field :password_updated_at, :value => Time.zone.now %>
-      <%= f.button :submit, "Create Account", class: 'btn-primary' %>
-    <% end %>
+<section id="download">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 panel panel-default">
+        <div class="panel-body">
+          <h2>Create an Account</h2>
+      
+          <%= simple_form_for resource, :as => resource_name,
+                                        :url => invitation_path(resource_name),
+                                        :html => { :method => :put } do |f| %>
+            <%= f.input :invitation_token, as: :hidden %>
+            
+            <%= form_group_for f, :username, label: false  do %>
+              <div class="field">  
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="fa fa-user fa-lg fa-fw"></span></span>
+                    <%= f.text_field :username, class: 'form-control', placeholder: 'Username', autofocus: true %>
+                </div>
+              </div>  
+            <% end %> 
+            
+            <%= form_group_for f, :password, label: false  do %>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="fa fa-key fa-lg fa-fw"></span>
+                </span>
+                <%= f.password_field :password, autofocus: false, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+              </div>
+            </div>  
+          <% end %>
+          
+          <%= form_group_for f, :password_confirmation, label: false  do %>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="fa fa-key fa-lg fa-fw"></span>
+                </span>
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Password Confirmation' %>
+              </div>
+            </div>  
+          <% end %>
+            
+            <%#= f.input :username %>
+            <%#= f.input :password %>
+            <%#= f.input :password_confirmation %>
+            <%= f.hidden_field :password_updated_at, :value => Time.zone.now %>
+            <%= f.button :submit, "Create Account", class: 'btn btn-primary btn-block btn-lg', data: {confirm: "Do you want to create a account?" } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>  

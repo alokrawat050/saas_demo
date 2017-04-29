@@ -5,12 +5,14 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <h2>Client's Details</h2>
-                </div>    
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align:right;" >
-                    <%= link_to new_client_path, class: "btn btn-large btn-primary" do %>
-                        <i class="fa fa-user-plus" aria-hidden="true"></i> Add Clients
-                    <% end %>
                 </div>
+                <% if (check_is_admin_rights?) %>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align:right;" >
+                        <%= link_to new_client_path, class: "btn btn-large btn-primary" do %>
+                            <i class="fa fa-user-plus" aria-hidden="true"></i> Add Clients
+                        <% end %>
+                    </div>
+                <% end %>    
             </div>    
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -32,19 +34,21 @@
                                             Work On This 
                                         <% end %>    
                                     </td>
-                                    <td class="form-group">
-                                        <%= link_to :controller => 'clients', :action => 'edit', :id => client.id  do %>
-                                          <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                                        <% end %>
-                                        
-                                        <%= link_to client, method: :delete, data: { confirm: 'Do you want to delete the record？' }  do %>
-                                        <%#= link_to client, method: :delete, data: { toggle: "modal", target: "#myModal" }  do %>
-                                            <i class="fa fa-trash-o fa-2x" style="color:red;"></i>
-                                        <% end %> 
-                                        <!--<a data-toggle="modal" data-target="#myModal">-->
-                                        <!--  <i class="fa fa-trash-o fa-2x" style="color:red;"></i>-->
-                                        <!--</a>-->
-                                    </td>
+                                    <% if (check_is_admin_rights?) %>
+                                        <td class="form-group">
+                                            <%= link_to :controller => 'clients', :action => 'edit', :id => client.id  do %>
+                                              <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                            <% end %>
+                                            
+                                            <%= link_to client, method: :delete, data: { confirm: 'Do you want to delete the record？' }  do %>
+                                            <%#= link_to client, method: :delete, data: { toggle: "modal", target: "#myModal" }  do %>
+                                                <i class="fa fa-trash-o fa-2x" style="color:red;"></i>
+                                            <% end %> 
+                                            <!--<a data-toggle="modal" data-target="#myModal">-->
+                                            <!--  <i class="fa fa-trash-o fa-2x" style="color:red;"></i>-->
+                                            <!--</a>-->
+                                        </td>
+                                    <% end %>    
                                 </tr>
                             <% end %>
                         </tbody>
