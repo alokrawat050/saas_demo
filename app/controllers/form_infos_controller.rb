@@ -11,9 +11,11 @@ class FormInfosController < ApplicationController
         @multiple_gstins.each do |x|
           if x.gstins.count == 1
             session[:gstin_id] = x.gstins.first.gstin_no
+            session[:gstin_count] = x.gstins.count
             flash[:notice] = "You Are Working on GSTIN Number:「 #{x.gstins.first.gstin_no}」"
             redirect_to form_infos_index_path
           else
+            session[:gstin_count] = x.gstins.count
             redirect_to form_infos_multiple_gstin_path
           end
         end  

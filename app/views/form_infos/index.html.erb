@@ -2,7 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-6">
-                <%= link_to "Change GSTIN Number", form_infos_multiple_gstin_path, class: "link" %>
+                <% if session[:gstin_count] > 1 %>
+                    <%= link_to "Change GSTIN Number", form_infos_multiple_gstin_path, class: "link" %>
+                <% end %>    
                 <span class="label label-warning">Year</span> 2017
                 <span class="label label-warning">Month</span> 05
             </div>

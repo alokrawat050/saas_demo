@@ -125,11 +125,11 @@
                                           <div class="input-group">
                                             <%#= form_group_for o, :gstin_no, label: false  do %>
                                               <%= o.text_field :gstin_no, class: 'form-control fields', placeholder: 'GSTIN' %>
-                                              <span class="input-group-addon">
+                                        	     <span class="input-group-addon">
                                                 <%= o.remove_nested_fields_link data: { confirm: 'Do you want to delete?' } do %>
                                           		    <i class="fa fa-trash-o fa-2x" style="color:red"></i>
                                         	      <% end %>
-                                        	     </span> 
+                                        	     </span>
                                         	   <%# end %>    
                                           </div>
                                         </div>    

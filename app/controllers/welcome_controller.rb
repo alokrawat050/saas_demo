@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  skip_before_filter :authenticate_user!, only: [:index, :find_team, :send_customer_mail]
+  skip_before_filter :authenticate_user!, only: [:index, :find_team, :send_customer_mail, :find_team_index]
   def index
   end
 
@@ -26,6 +26,9 @@ class WelcomeController < ApplicationController
     else
       redirect_to root_path, :alert => "Please Enter Mandatory Field."
     end  
+  end
+  
+  def find_team_index
   end
   
   protected

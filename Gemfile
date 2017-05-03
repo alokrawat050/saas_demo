@@ -78,6 +78,7 @@ gem 'stripe-rails'
 #for cron job handling
 gem 'whenever', require: false
 
+#for mail send via amazon 
 gem 'aws-ses', '~> 0.6.0'
 
 group :development, :test do
