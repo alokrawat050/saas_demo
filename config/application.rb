@@ -2,6 +2,8 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require 'apartment/elevators/subdomain' # or 'domain' or 'generic'
+#for email DNS check
+require 'resolv'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

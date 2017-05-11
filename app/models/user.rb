@@ -11,7 +11,20 @@ class User < ActiveRecord::Base
   validates :username, presence: true,
                              uniqueness: { case_sensitive: false},
                              format: { with: /\A[\w\-]+\Z/i, message: 'contains invalid characters' }
-     
+  
+  validate :check_email
+  def check_email
+    unless email.blank?
+      if email.present?
+        unless email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+            errors.add(:email, "Please Check Email Address.")
+        else
+            errors.add(:email, "Email Address Domain Does Not Exists.Please Confirm.") unless   validate_email_domain(email)
+        end
+      end
+    end
+  end
+   
   before_validation :downcase_username
   
   # Virtual attribute for authenticating by either user_id or email
@@ -106,5 +119,13 @@ class User < ActiveRecord::Base
   
   def downcase_username
       self.username = username.try(:downcase) 
+  end
+  
+  def validate_email_domain(email_id)
+    domain = email_id.match(/\@(.+)/)[1]
+      Resolv::DNS.open do |dns|
+        @mx = dns.getresources(domain, Resolv::DNS::Resource::IN::MX)
+      end
+      @mx.size > 0 ? true : false
   end
 end

@@ -9,7 +9,7 @@
             <!--    </div>-->
             <!--</div>-->
             <!--<div class="col-md-4 col-md-offset-4">-->
-            <div class="col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="form-group">
                     <%#= link_to company_masters_path, class: "btn btn-large btn-primary" do %>
                         <!--<i class="fa fa-user-plus" aria-hidden="true"></i> Add Clients-->
@@ -18,12 +18,16 @@
                     <%= render 'clients/client_index' %>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="form-group">
                     <%#= link_to invite_users_path, class: "btn btn-large btn-primary" do %>
                         <!--<i class="fa fa-user-plus" aria-hidden="true"></i> Add Users-->
                     <%# end %>
-                    <%= render 'invite_users/invite_users_list' %>
+                    <% if session[:is_mobile] %>
+                        <%= render 'invite_users/m_invite_users_list' %>
+                    <% else %>    
+                        <%= render 'invite_users/invite_users_list' %>
+                    <% end %>    
                 </div>    
             </div>
         </div>

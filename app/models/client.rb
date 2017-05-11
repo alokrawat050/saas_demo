@@ -18,9 +18,32 @@ class Client < ApplicationRecord
     
     validates_presence_of   :owner_name, :message => 'Please Enter Owner name.'
     validates_presence_of   :client_pan_no, :message => 'Please Enter Client PAN NO.'
+    validates_presence_of   :owner_name, :message => 'Please Enter Owner Name.'
+    validates_presence_of   :owner_email, :message => 'Please Enter Owner Email.'
+    
+    validate :check_email
+      def check_email
+        unless owner_email.blank?
+          if owner_email.present?
+            unless owner_email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+                errors.add(:owner_email, "Please Check Email Address.")
+            else
+                errors.add(:owner_email, "Email Address Domain Does Not Exists.Please Confirm.") unless   validate_email_domain(owner_email)
+            end
+          end
+        end
+      end
     
     private
         def downcase_client_name
             self.client_name = client_name.try(:downcase) 
         end
+        
+        def validate_email_domain(email_id)
+            domain = email_id.match(/\@(.+)/)[1]
+              Resolv::DNS.open do |dns|
+                @mx = dns.getresources(domain, Resolv::DNS::Resource::IN::MX)
+              end
+              @mx.size > 0 ? true : false
+          end
 end

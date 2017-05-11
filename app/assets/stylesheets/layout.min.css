@@ -195,7 +195,8 @@
     font-size: 17px
 }
 .page-header.navbar .top-menu .navbar-nav>li.dropdown>.dropdown-toggle>.badge {
-    font-family: "Open Sans", sans-serif;
+    /*font-family: "Open Sans", sans-serif;*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
     position: absolute;
     top: 17px;
     right: 9px;
@@ -1258,7 +1259,8 @@
     color: #666;
     margin: 0 0 20px;
     font-weight: 300;
-    font-family: "Open Sans", sans-serif
+    /*font-family: "Open Sans", sans-serif*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
 }
 .page-title small {
     font-size: 13px;

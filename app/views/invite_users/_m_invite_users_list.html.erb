@@ -1,0 +1,61 @@
+<% if (check_is_admin_rights?) %>
+    <% def msg(status) return "#{status}します、よろしいでしょうか？" end %>
+    <div class="container">
+        <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h2>Authourized User's List</h2><span style="color:red;">Please refresh the page after edit the data.(working on that issue.)</span>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @invite_users.each do | user | %>
+                                <tr>
+                                    <td><%= user.email %></td>
+                                    <td><%= user_status(user) %></td>
+                                    <td class="form-group">
+                                        <% if user.is_admin || user.invitation_accepted? %>
+                                            <%#= link_to :controller => 'invite_users', :action => 'edit', :id => user.id, data: {target: "#myModal", toggle: "modal"} do %>
+                                            <%= link_to edit_user_path(user), remote: true  do %>
+                                              <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                            <% end %>
+                                        <% end %>    
+                                        
+                                        <%= link_to user, method: :delete, data: { confirm: 'Do you want to delete the record？' }  do %>
+                                            <i class="fa fa-trash-o fa-2x" style="color:red;"></i>
+                                        <% end %> 
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                    
+                    <h3 class="extra-margin-top">Invite User</h3>
+                    <%= simple_form_for(User.new, url: user_invitation_path, html: { class: "form-inline", method: :post }) do | f |  %>
+                        <%= f.input :email, placeholder: 'Email', label: false, class: "form-control" %>
+                        <%= f.button :submit, 'Invite User', class:"btn btn-primary" %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>    
+
+<script>
+  $(function() {
+    $('#toggle-is_admin').bootstrapToggle({
+      on: 'Yes',
+      off: 'No',
+      onstyle: 'success',
+      offstyle: "danger"
+    });
+  })
+</script>
+
+<div id="user-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

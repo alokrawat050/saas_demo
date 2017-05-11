@@ -45,6 +45,8 @@ gem 'delayed_job_active_record'
 
 #To Get Calendar Control
 gem 'bootstrap-datepicker-rails'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 # Admin Access
 gem 'rails_admin'

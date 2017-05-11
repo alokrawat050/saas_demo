@@ -5,7 +5,8 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Open Sans", sans-serif
+    /*font-family: "Open Sans", sans-serif*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
 }
 .bold.btn,
 .sbold.btn {
@@ -984,7 +985,8 @@ h6 {
 .chart,
 .pie,
 .primary-font {
-    font-family: "Open Sans", sans-serif!important
+    /*font-family: "Open Sans", sans-serif!important*/
+    font-family: 'Hind', 'Open Sans', sans-serif!important;
 }
 h1 {
     font-size: 36px
@@ -6920,7 +6922,8 @@ fieldset[disabled] .btn.purple-soft:not(.btn-outline):hover {
     background-color: #fff;
     margin: 10px 0 0;
     border: 1px solid #eee;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
@@ -7079,7 +7082,8 @@ fieldset[disabled] .btn.purple-soft:not(.btn-outline):hover {
 }
 .label,
 .table.table-light>thead>tr>th {
-    font-family: "Open Sans", sans-serif
+    /*font-family: "Open Sans", sans-serif*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
 }
 .dropdown-submenu:hover>.dropdown-menu {
     display: block

@@ -9,7 +9,8 @@ http://www.templatemo.com/tm-446-boxer
 body
     {
         background: #fff;
-        font-family: 'Open Sans', sans-serif;
+        /*font-family: 'Open Sans', sans-serif;*/
+        font-family: 'Hind', 'Open Sans', sans-serif;
         font-weight: 300;
         position: relative;
         width: 100%;

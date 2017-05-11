@@ -25,7 +25,8 @@
     right: 6px
 }
 .datepaginator a {
-    font-family: 'Open Sans';
+    /*font-family: 'Open Sans';*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
     font-size: 13px;
     font-weight: 300
 }
@@ -33,7 +34,8 @@
 .datepicker table th,
 .datetimepicker table td,
 .datetimepicker table th {
-    font-family: 'Open Sans'!important
+    /*font-family: 'Open Sans'!important*/
+    font-family: 'Hind', 'Open Sans', sans-serif!important;
 }
 #dp-calendar {
     right: 4px!important
@@ -268,7 +270,8 @@
 }
 .bootstrap-select.btn-group .dropdown-menu>li>dt>.text {
     font-weight: 600;
-    font-family: 'Open Sans';
+    /*font-family: 'Open Sans';*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
     font-size: 14px
 }
 .bootstrap-select.btn-group .dropdown-menu .text-muted {
@@ -594,10 +597,12 @@
 }
 .bootstrap-tagsinput .tag [data-role=remove] {
     box-shadow: none;
-    font-family: arial
+    /*font-family: arial*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
 }
 .bootstrap-tagsinput .tag [data-role=remove]:after {
-    font-family: arial
+    /*font-family: arial*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
 }
 .bootstrap-tagsinput .tag [data-role=remove]:hover {
     text-decoration: none;
@@ -1292,7 +1297,8 @@ table.dataTable>tbody>tr.child ul li {
 }
 .portlet.calendar .fc-text-arrow {
     font-size: 22px;
-    font-family: "Courier New", Courier, monospace;
+    /*font-family: "Courier New", Courier, monospace;*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
     vertical-align: baseline
 }
 .portlet.calendar .fc-event {
@@ -1429,7 +1435,8 @@ table.dataTable>tbody>tr.child ul li {
     right: 3px!important
 }
 .gritter-title {
-    font-family: 'Open Sans';
+    /*font-family: 'Open Sans';*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
     font-size: 18px;
     font-weight: 300
 }
@@ -1637,14 +1644,16 @@ table.dataTable>tbody>tr.child ul li {
     min-width: 125px;
     background-color: #fff;
     font-size: 14px;
-    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    /*font-family: "Segoe UI", Helvetica, Arial, sans-serif;*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
     box-shadow: 5px 5px rgba(102, 102, 102, .1);
     border: 1px solid #efefef
 }
 .morris-hover.morris-default-style .morris-hover-point,
 .select2-container--bootstrap .select2-results__group,
 .select2-container--bootstrap .select2-selection {
-    font-family: "Open Sans", sans-serif
+    /*font-family: "Open Sans", sans-serif*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
 }
 .vakata-context li {
     border: 0
@@ -1854,7 +1863,8 @@ iframe[src="about:blank"] {
     font-weight: 400;
     font-size: 15px;
     color: #7D8C9D;
-    font-family: "Open Sans", sans-serif
+    /*font-family: "Open Sans", sans-serif*/
+    font-family: 'Hind', 'Open Sans', sans-serif;
 }
 .morris-hover.morris-default-style .morris-hover-point {
     text-align: left;

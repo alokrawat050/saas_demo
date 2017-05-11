@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  before_filter :load_schema, :authenticate_user!, :set_mailer_host
+  before_filter :load_schema, :authenticate_user!, :set_mailer_host, :get_device_details
   before_filter :configure_permitted_parameters, if: :devise_controller?
   
   def is_payment_info_submit
@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
           end  
       end
     end  
+  end
+  
+  #get user device details such as app,browser,version,platform,os,is_mobile or not...
+  def get_device_details
+    @user_agent = UserAgent.parse(request.env["HTTP_USER_AGENT"])
+    session[:is_mobile] = @user_agent.mobile?
   end
   
   protected

@@ -9,7 +9,9 @@
  @import "typography";
  @import "bootstrap_notify";
  @import "bootstrap-toggle";
- @import "bootstrap-datepicker3";
+ // @import "bootstrap-datepicker3";
+ @import 'bootstrap';
+ @import 'bootstrap-datetimepicker';
  @import "templatemo-style-custom";
  
  .field_with_errors_bk {
@@ -55,4 +57,8 @@
 .payment-errors {
     color: red;
     text-align: center;
+}
+
+body {
+ font-family: 'Hind', 'Open Sans', sans-serif;
 }

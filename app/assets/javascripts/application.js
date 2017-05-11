@@ -18,6 +18,6 @@
 //= require jquery.bootstrap.wizard
 //= require prettify
 //= require jquery.validate
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB
-//= require clients
+//= require moment
+//= require bootstrap-datetimepicker
 //= require nested_form_fields
