@@ -6,7 +6,7 @@
 # For example, setting:
 # GMAIL_USERNAME: 'Your_Gmail_Username'
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
-MAIL_USERNAME: 'mycurrassignment@gmail.com'
-MAIL_PASSWORD: 'mycurrassignment2017'
-PAN_NO_ENCRYPTED_KEY: 'VtHBCVSqQCjYrumBfoXEhiaOlxA4ApqLFbRt7IAA4KLPzsTq'
-MY_DEVELOPMENT_URL: 'https://gst-alokrawat050.c9users.io/'
+MAIL_USERNAME: 'abc@gmail.com'
+MAIL_PASSWORD: 'abc123'
+PAN_NO_ENCRYPTED_KEY: 'xycmksjdkjdjdkdjdkddjdk'
+MY_DEVELOPMENT_URL: 'https://demo-alokrawat050.c9users.io/'

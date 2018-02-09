@@ -17,8 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: UTF8
-  username: gst_user
-  password: gstUser2017
+  username: user_name
+  password: pwd
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 500
@@ -81,15 +81,15 @@ test:
 staging:
   <<: *default
   database: assignment
-  username: <%= ENV['ONETAXGST_DATABASE_USER'] %>
-  password: <%= ENV['ONETAXGST_DATABASE_PASSWORD'] %>
-  host: onetaxgst.rds.amazonaws.com
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: demo.rds.amazonaws.com
   port: 5432
 
 production:
   <<: *default
   database: assignment
-  username: <%= ENV['ONETAXGST_DATABASE_USER'] %>
-  password: <%= ENV['ONETAXGST_DATABASE_PASSWORD'] %>
-  host: <%= ENV['ONETAXGST_DATABASE_HOST'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
   port: 5432

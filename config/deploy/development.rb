@@ -1,5 +1,5 @@
 set :stage, :development
-set :deploy_to, '/home/gstdev/gst'
+set :deploy_to, '/home/your_name/prj'
 
 # Extended Server Syntax
 # ======================
@@ -7,16 +7,16 @@ set :deploy_to, '/home/gstdev/gst'
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server '35.154.156.3', user: 'gstdev', roles: %w{app web db}, my_property: :my_value
+server 'your_ip', user: 'your_name', roles: %w{app web db}, my_property: :my_value
 
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :app, %w{gstdev@35.154.156.3}
-role :web, %w{gstdev@35.154.156.3}
-role :db,  %w{gstdev@35.154.156.3}
+role :app, %w{your_name@your_ip}
+role :web, %w{your_name@your_ip}
+role :db,  %w{your_name@your_ip}
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
@@ -30,7 +30,7 @@ role :db,  %w{gstdev@35.154.156.3}
 
 # Global options
 ## --------------
-set :ssh_options, { keys: %w(/home/ubuntu/.ssh/gst-dev.pem),
+set :ssh_options, { keys: %w(/home/user_name/.ssh/your_pem.pem),
   forward_agent: false,
   auth_methods: %w(publickey password)
 }

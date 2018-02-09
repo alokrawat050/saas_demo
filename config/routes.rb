@@ -5,7 +5,7 @@ class SubdomainPresent
     elsif Rails.env == "staging"
       request.subdomain.present?
     else
-      request.subdomain.gsub!(".gst-alokrawat050","").present?
+      request.subdomain.gsub!(".demo-alokrawat050","").present?
 	  end
   end
 end
@@ -17,7 +17,7 @@ class SubdomainBlank
     elsif Rails.env == "staging"
       request.subdomain.blank?
     else
-      request.subdomain.gsub!(".gst-alokrawat050","").blank?
+      request.subdomain.gsub!(".dmeo-alokrawat050","").blank?
 	  end
   end
 end
