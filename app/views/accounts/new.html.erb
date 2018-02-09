@@ -40,11 +40,11 @@
                                 <%= f.text_field :subdomain_name, class: 'form-control', placeholder: 'Company Name' %>
                                 <span class="input-group-addon">
                                     <% if Rails.env == "production" %>
-            	                        .onetaxgst.in
+            	                        .produciton.in
                                     <% elsif Rails.env == "staging" %>
-                                    	.onetaxgst.in
+                                    	.staging.in
                                     <% else %>
-                                        .gst-alokrawat050.c9users.io    	
+                                        .demo-alokrawat050.c9users.io    	
                                     <% end %>
                                 </span>
                             </div>

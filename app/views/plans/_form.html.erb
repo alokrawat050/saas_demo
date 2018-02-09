@@ -12,7 +12,6 @@
         <div class="users"><%= plan.users %> User</div>
         <div class="per_month">per month</div>
         <div class="signup">
-          <%#= link_to "Subscribe", new_company_master_path(:plan_id => plan.id) %>
           <%= link_to "Subscribe", new_account_path(:plan_id => plan.id) %>
         </div>
       </div>

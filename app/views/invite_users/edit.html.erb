@@ -1,5 +1,4 @@
 <% def msg(status) return "#{status}します、よろしいでしょうか？" end %>
-<%#= form_for :controller => 'invite_users', @invite_user do |f| %>
 <%= form_for @invite_user, :url => {:controller => "invite_users", :action => 'update'} do |f| %>
     <%= render(:partial => "form", :locals =>{:f => f}) %>
     

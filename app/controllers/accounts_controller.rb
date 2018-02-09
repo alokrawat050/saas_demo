@@ -16,7 +16,7 @@ class AccountsController < ApplicationController
       Apartment::Tenant.switch!(@account.subdomain_name)
       if @account.save
         session[:plan_id] = nil
-        redirect_to new_user_session_url(subdomain: "#{@account.subdomain_name}.gst-alokrawat050")
+        redirect_to new_user_session_url(subdomain: "#{@account.subdomain_name}.demo-alokrawat050")
       else
         render action: 'new'
       end

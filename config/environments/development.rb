@@ -41,7 +41,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
-  config.stripe.secret_key = 'sk_test_M3L7h5eyHcGcR0Bq7EOUx3oS'
-  config.stripe.publishable_key = 'pk_test_mQ3ijzgRz0aJ3TUvYqHdgulP'
+  config.stripe.secret_key = 'your_key'
+  config.stripe.publishable_key = 'your_key'
   config.stripe.eager_load = ['user']
 end

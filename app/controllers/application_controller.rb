@@ -51,11 +51,11 @@ class ApplicationController < ActionController::Base
     def set_mailer_host
       subdomain = current_account ? "#{current_account.subdomain_name}." : ""
       if Rails.env == "production"
-  	    ActionMailer::Base.default_url_options[:host] = "#{subdomain}onetaxgst.in"
+  	    ActionMailer::Base.default_url_options[:host] = "#{subdomain}<your production name>.com"
       elsif Rails.env == "staging"
-        ActionMailer::Base.default_url_options[:host] = "#{subdomain}onetaxgst.in"
+        ActionMailer::Base.default_url_options[:host] = "#{subdomain}<your staging name>.com"
       else
-        ActionMailer::Base.default_url_options[:host] = "#{subdomain}gst-alokrawat050.c9users.io"
+        ActionMailer::Base.default_url_options[:host] = "#{subdomain}demo-alokrawat050.c9users.io"
   	  end
     end
     
@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
       elsif Rails.env == "staging"
         return request.subdomain
       else
-        return request.subdomain.gsub!(".gst-alokrawat050","")
+        return request.subdomain.gsub!(".demo-alokrawat050","")
   	  end
     end
     

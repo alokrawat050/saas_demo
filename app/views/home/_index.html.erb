@@ -1,28 +1,13 @@
 <section id="download">
     <div class="container">
         <div class="row">
-            <!--<div class="col-md-12">-->
-            <!--    <div classs="well"> Welcome, -->
-            <!--        <%# if user_signed_in? %>-->
-            <!--            <%#= current_user.username %>-->
-            <!--        <%# end %>    -->
-            <!--    </div>-->
-            <!--</div>-->
-            <!--<div class="col-md-4 col-md-offset-4">-->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="form-group">
-                    <%#= link_to company_masters_path, class: "btn btn-large btn-primary" do %>
-                        <!--<i class="fa fa-user-plus" aria-hidden="true"></i> Add Clients-->
-                    <%# end %>
-                    <%#= render 'company_masters/company_index' %>
                     <%= render 'clients/client_index' %>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="form-group">
-                    <%#= link_to invite_users_path, class: "btn btn-large btn-primary" do %>
-                        <!--<i class="fa fa-user-plus" aria-hidden="true"></i> Add Users-->
-                    <%# end %>
                     <% if session[:is_mobile] %>
                         <%= render 'invite_users/m_invite_users_list' %>
                     <% else %>    

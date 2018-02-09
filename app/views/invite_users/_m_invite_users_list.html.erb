@@ -21,7 +21,6 @@
                                     <td><%= user_status(user) %></td>
                                     <td class="form-group">
                                         <% if user.is_admin || user.invitation_accepted? %>
-                                            <%#= link_to :controller => 'invite_users', :action => 'edit', :id => user.id, data: {target: "#myModal", toggle: "modal"} do %>
                                             <%= link_to edit_user_path(user), remote: true  do %>
                                               <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                             <% end %>

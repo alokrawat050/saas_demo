@@ -26,7 +26,6 @@ class ClientsController < ApplicationController
   end
   
   def edit
-    #@client.gstin.build
   end
   
   def update

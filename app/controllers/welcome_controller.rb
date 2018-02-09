@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
       Apartment::Tenant.switch!('public')
       if search_team(params[:team_name])
         Apartment::Tenant.switch!(params[:team_name])
-        redirect_to new_user_session_url(subdomain: "#{params[:team_name]}.gst-alokrawat050")
+        redirect_to new_user_session_url(subdomain: "#{params[:team_name]}.demo-alokrawat050")
       else
         flash[:alert] = "Team Not Found."
         redirect_to root_path
